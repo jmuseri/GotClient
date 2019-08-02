@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+//
 public class GotRestClientService {
 	private static final String REST_URI = "http://localhost:8180";
 	
@@ -28,6 +28,7 @@ public class GotRestClientService {
 
 				// get the response-code from the response
 				responseCode = myHttpConnection.getResponseCode();
+				if (responseCode != HttpURLConnection.HTTP_OK) throw new Exception ("Error consuming rest service "+url+"\n "+myHttpConnection.getResponseMessage());
 				
 				
 				// open the contents of the URL as an inputStream and print to stdout
@@ -45,27 +46,21 @@ public class GotRestClientService {
 		return bean;
 	}
 	
-	
-	
 	private String getParamReplacement(String opUrl, Map<String, String> params) {
 		
         Set<String> mapKeys = params.keySet();
-
         // Recorremos el mapa por sus llaves e imprimimos sus valores.
         for (String key : mapKeys) {
         	opUrl = opUrl.replaceAll("\\{" + "id" + "\\}", params.get(key));
         }
-		
-
 		return opUrl;
 	}
-	
 	
 	public static void main(String[] args) {
 		GotRestClientService gotClient = new GotRestClientService();
 		HashMap<String,String> params = new HashMap<String, String>();
 		params.put("id","1");
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.AUTORIZADO_SHOW, "com.sa.bbva.got.model.Autorizado",params);
+		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.AUTORIZADO_SHOW, "com.sa.bbva.got.model.Autorizado", params);
 		System.out.println(obj.toString());
 	}
 }	
