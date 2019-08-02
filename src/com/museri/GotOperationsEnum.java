@@ -28,6 +28,7 @@ public enum GotOperationsEnum {
 	
 	private String requestMethod;
 	private String url;
+	//private String responseClass;
 	
 	public String getRequestMethod() {
 		return requestMethod;
@@ -41,7 +42,14 @@ public enum GotOperationsEnum {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+
+//	public String getResponseClass() {
+//		return responseClass;
+//	}
+//	public void setResponseClass(String responseClass) {
+//		this.responseClass = responseClass;
+//	}
+
 	private GotOperationsEnum(String url,String requestMethod) {
 		this.requestMethod = requestMethod;
 		this.url = url;
