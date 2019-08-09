@@ -1,6 +1,6 @@
-package com.sa.bbva.got.client;
+package com.sa.bbva.got.client.service;
 
-enum GotOperationsEnum {
+public enum GotOperationsEnum {
 
 	AUTORIZADO_ADD("/funcional/autorizado/add","POST","java.lang.Object"),
 	AUTORIZADO_DELETE("/funcional/autorizado/delete/{id}","POST","java.lang.Object"),
@@ -10,7 +10,7 @@ enum GotOperationsEnum {
 	
 	TRAMITE_ADD("/funcional/tramite/add","POST","java.lang.Object"), //Add a tramite
 	TRAMITE_AUTORIZADO_ADD("/funcional/tramite/autorizado/add","POST","java.lang.Object"), //Add a tramiteAutorizado
-	TRAMITE_AUTORIZADO_DELETE ("/funcional/tramite/autorizado/delete/{tramiteId}/{autorizadoId}}","POST","java.lang.Object"),//Delete a tramiteAutorizado
+	TRAMITE_AUTORIZADO_DELETE ("/funcional/tramite/autorizado/delete/{tramiteId}/{autorizadoId}","POST","java.lang.Object"),//Delete a tramiteAutorizado
 	TRAMITE_AUTORIZADO_LIST("/funcional/tramite/autorizado/list/{id}","GET","[Lcom.sa.bbva.got.model.TramiteAutorizado;"), //Search a tramiteAutorizado with a Tramite ID
 	TRAMITE_DELETE ("/funcional/tramite/delete/{id}","POST","java.lang.Object"), //Delete a tramite
 	TRAMITE_DETALLE_ADD("/funcional/tramite/detalle/add","POST","java.lang.Object"), //Add a tramiteDetalle

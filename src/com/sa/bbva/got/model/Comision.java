@@ -113,4 +113,31 @@ public class Comision implements Serializable{
 	public void setFechaModif(Date fechaModif) {
 		this.fechaModif = fechaModif;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Comision [id=");
+		builder.append(id);
+		builder.append(", param1=");
+		builder.append(param1);
+		builder.append(", param2=");
+		builder.append(param2);
+		builder.append(", param3=");
+		builder.append(param3);
+		builder.append(", param4=");
+		builder.append(param4);
+		builder.append(", param5=");
+		builder.append(param5);
+		builder.append(", usuAlta=");
+		builder.append(usuAlta);
+		builder.append(", fechaAlta=");
+		builder.append(fechaAlta);
+		builder.append(", usuModif=");
+		builder.append(usuModif);
+		builder.append(", fechaModif=");
+		builder.append(fechaModif);
+		builder.append("]");
+		return builder.toString();
+	}
 }

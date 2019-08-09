@@ -171,4 +171,41 @@ public class TipoTramite implements Serializable{
 		this.fechaModif = fechaModif;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TipoTramite [id=");
+		builder.append(id);
+		builder.append(", descripcion=");
+		builder.append(descripcion);
+		builder.append(", cobraComision=");
+		builder.append(cobraComision);
+		builder.append(", comision=");
+		builder.append(comision);
+		builder.append(", requiereDocumentacion=");
+		builder.append(requiereDocumentacion);
+		builder.append(", activo=");
+		builder.append(activo);
+		builder.append(", autorizado=");
+		builder.append(autorizado);
+		builder.append(", sectorInicial=");
+		builder.append(sectorInicial);
+		builder.append(", campos=");
+		builder.append(campos);
+		builder.append(", horasResolucion=");
+		builder.append(horasResolucion);
+		builder.append(", horasVencimiento=");
+		builder.append(horasVencimiento);
+		builder.append(", usuAlta=");
+		builder.append(usuAlta);
+		builder.append(", fechaAlta=");
+		builder.append(fechaAlta);
+		builder.append(", usuModif=");
+		builder.append(usuModif);
+		builder.append(", fechaModif=");
+		builder.append(fechaModif);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

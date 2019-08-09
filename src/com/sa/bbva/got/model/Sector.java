@@ -104,4 +104,29 @@ public class Sector implements Serializable{
 		this.fechaModif = fechaModif;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Sector [id=");
+		builder.append(id);
+		builder.append(", canal=");
+		builder.append(canal);
+		builder.append(", sector=");
+		builder.append(sector);
+		builder.append(", descripcion=");
+		builder.append(descripcion);
+		builder.append(", activo=");
+		builder.append(activo);
+		builder.append(", usuAlta=");
+		builder.append(usuAlta);
+		builder.append(", fechaAlta=");
+		builder.append(fechaAlta);
+		builder.append(", usuModif=");
+		builder.append(usuModif);
+		builder.append(", fechaModif=");
+		builder.append(fechaModif);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

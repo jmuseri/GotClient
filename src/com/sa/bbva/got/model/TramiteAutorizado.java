@@ -54,4 +54,19 @@ public class TramiteAutorizado implements Serializable{
 		this.fechaAlta = fechaAlta;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TramiteAutorizado [id=");
+		builder.append(id);
+		builder.append(", autorizado=");
+		builder.append(autorizado);
+		builder.append(", usuAlta=");
+		builder.append(usuAlta);
+		builder.append(", fechaAlta=");
+		builder.append(fechaAlta);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

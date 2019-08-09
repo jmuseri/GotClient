@@ -35,4 +35,15 @@ public class TramiteAutorizadoKey implements Serializable {
 	public void setAutorizadoId(Integer autorizadoId) {
 		this.autorizadoId = autorizadoId;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TramiteAutorizadoKey [tramiteId=");
+		builder.append(tramiteId);
+		builder.append(", autorizadoId=");
+		builder.append(autorizadoId);
+		builder.append("]");
+		return builder.toString();
+	}
 }

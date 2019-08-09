@@ -172,4 +172,43 @@ public class Tramite implements Serializable {
 	public void setFechaModif(Date fechaModif) {
 		this.fechaModif = fechaModif;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Tramite [id=");
+		builder.append(id);
+		builder.append(", tipoTramite=");
+		builder.append(tipoTramite);
+		builder.append(", clienteId=");
+		builder.append(clienteId);
+		builder.append(", autorizado=");
+		builder.append(autorizado);
+		builder.append(", sectorInicio=");
+		builder.append(sectorInicio);
+		builder.append(", sectorActual=");
+		builder.append(sectorActual);
+		builder.append(", detalle=");
+		builder.append(detalle);
+		builder.append(", cuentaCobro=");
+		builder.append(cuentaCobro);
+		builder.append(", estado=");
+		builder.append(estado);
+		builder.append(", fechaFinalizacion=");
+		builder.append(fechaFinalizacion);
+		builder.append(", fechaInicio=");
+		builder.append(fechaInicio);
+		builder.append(", fechaVencimiento=");
+		builder.append(fechaVencimiento);
+		builder.append(", usuAlta=");
+		builder.append(usuAlta);
+		builder.append(", fechaAlta=");
+		builder.append(fechaAlta);
+		builder.append(", usuModif=");
+		builder.append(usuModif);
+		builder.append(", fechaModif=");
+		builder.append(fechaModif);
+		builder.append("]");
+		return builder.toString();
+	}
 }

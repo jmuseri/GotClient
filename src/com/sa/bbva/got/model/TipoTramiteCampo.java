@@ -113,4 +113,31 @@ public class TipoTramiteCampo implements Serializable {
 		this.fechaModif = fechaModif;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TipoTramiteCampo [id=");
+		builder.append(id);
+		builder.append(", campoDisponible=");
+		builder.append(campoDisponible);
+		builder.append(", obligatorio=");
+		builder.append(obligatorio);
+		builder.append(", activo=");
+		builder.append(activo);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", leyenda=");
+		builder.append(leyenda);
+		builder.append(", usuAlta=");
+		builder.append(usuAlta);
+		builder.append(", fechaAlta=");
+		builder.append(fechaAlta);
+		builder.append(", usuModif=");
+		builder.append(usuModif);
+		builder.append(", fechaModif=");
+		builder.append(fechaModif);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

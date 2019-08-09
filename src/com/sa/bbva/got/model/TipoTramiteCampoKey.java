@@ -36,4 +36,15 @@ public class TipoTramiteCampoKey implements Serializable {
 		this.campoDisponibleId = campoDisponibleId;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TipoTramiteCampoKey [tipoTramiteId=");
+		builder.append(tipoTramiteId);
+		builder.append(", campoDisponibleId=");
+		builder.append(campoDisponibleId);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

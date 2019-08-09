@@ -36,4 +36,15 @@ public class TramiteDetalleKey implements Serializable {
 		this.tipoTramiteCampoId = tipoTramiteCampoId;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TramiteDetalleKey [tramiteId=");
+		builder.append(tramiteId);
+		builder.append(", tipoTramiteCampoId=");
+		builder.append(tipoTramiteCampoId);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

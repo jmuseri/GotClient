@@ -83,4 +83,25 @@ public class EstadoTramite implements Serializable{
 	public void setFechaModif(Date fechaModif) {
 		this.fechaModif = fechaModif;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("EstadoTramite [id=");
+		builder.append(id);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", descripcion=");
+		builder.append(descripcion);
+		builder.append(", usuAlta=");
+		builder.append(usuAlta);
+		builder.append(", fechaAlta=");
+		builder.append(fechaAlta);
+		builder.append(", usuModif=");
+		builder.append(usuModif);
+		builder.append(", fechaModif=");
+		builder.append(fechaModif);
+		builder.append("]");
+		return builder.toString();
+	}
 }

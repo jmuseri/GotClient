@@ -1,4 +1,4 @@
-package com.sa.bbva.got.client;
+package com.sa.bbva.got.client.service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,46 +9,74 @@ import java.net.URL;
 import java.util.Map;
 import java.util.Set;
 
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sa.bbva.got.client.exception.GotClientException;
-//
-public class GotRestClientService {
-	private static final String REST_URI = "http://localhost:8180";
 
+/**
+ * Cliente GOT
+ * @author jmuseri
+ *
+ */
+
+public class GotRestClientService {
 	
+	
+	private String REST_URI;
+
+	/**
+	 * Ejecutar peticion sin parametros get.
+	 * @param oper Operacion a ejecutar.
+	 * @param obj Parametros post a jsonizar. 
+	 * @return Object respuesta del tipo oper.getResponseClass()
+	 * @throws GotClientException
+	 */
 	public Object ejecutarServicio (GotOperationsEnum oper, Object ob ) throws GotClientException{
 		return this.ejecutarServicio(oper, null, ob);
 	}
 	
+	/**
+	 * Ejecutar peticion sin parametros post.
+	 * @param oper Operacion a ejecutar.
+	 * @param obj Parametros post a jsonizar. 
+	 * @return Object respuesta del tipo oper.getResponseClass()
+	 * @throws GotClientException
+	 */
 	public Object ejecutarServicio (GotOperationsEnum oper, Map<String, String> params ) throws GotClientException{
 		return this.ejecutarServicio(oper, params, null);
 	}
 	
-	
+	/**
+	 * Ejecuta peticion Rest.
+	 * @param oper Operacion a ejecutar.
+	 * @param params Parametros get para la url
+	 * @param obj Parametros post a jsonizar. 
+	 * @return Object respuesta del tipo oper.getResponseClass()
+	 * @throws GotClientException
+	 */
 	public Object ejecutarServicio (GotOperationsEnum oper,  Map<String, String> params, Object obj ) throws GotClientException{
 		String inputString = null;
 		int responseCode = 0;
 		Object bean = null;
 		try {
-			URL url = new URL(REST_URI+getParamReplacement(oper.getUrl(),params, oper.getRequestMethod()));
+			URL url = new URL(REST_URI+getParamReplacement(oper.getUrl(),params));
 			System.out.println("OP: "+url);
 			// Get an HttpURLConnection subclass object instead of URLConnection
 			HttpURLConnection myHttpConnection = (HttpURLConnection) url.openConnection();
 			// setRequestMethod
 			myHttpConnection.setRequestMethod(oper.getRequestMethod());
-
+			myHttpConnection.setRequestProperty("Content-Type", "application/json");
 
 	        // Output the JSON string to the REST service
            if (obj!=null) {
     	        myHttpConnection.setDoOutput(true);
-                myHttpConnection.setRequestProperty("Content-Type", "application/json");
 		        OutputStream output = myHttpConnection.getOutputStream();
 			    ObjectMapper objectMapper = new ObjectMapper();
 			    objectMapper.writeValue(output, obj);
 		        output.flush();
-            }			
+            }
 			// get the response-code from the response
 			responseCode = myHttpConnection.getResponseCode();
 			System.out.println("RESPONSE CODE: "+responseCode);
@@ -68,20 +96,30 @@ public class GotRestClientService {
 	}
 	
 	
-	
-	private String getParamReplacement(String opUrl, Map<String, String> params, String requestMethod) {
+	/**
+	 * Arma la url del request con los parametros (get)
+	 * 
+	 */
+	private String getParamReplacement(String opUrl, Map<String, String> params) {
 		if (params !=null){
 			Set<String> mapKeys = params.keySet();
-			// Recorremos el mapa por sus llaves e imprimimos sus valores.
 	        for (String key : mapKeys) {
-	        	opUrl = opUrl.replaceAll("\\{" + "id" + "\\}", params.get(key));
+	        	opUrl = opUrl.replaceAll("\\{" + key + "\\}", params.get(key));
 	        }
 		}        
 		return opUrl;
-		
 	}	
 	
-	
+	/**
+	 * 
+	 * @param <T> Devuelve una clase del tipo MiClase.
+	 * @param json El String del Json
+	 * @param miClase Clase a la que voy a mapear el Json
+	 * @return Mapea del json a un objeto de la clase miClase.
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
 	private static <T> T mapFromJson(String json, Class<T> miClase) throws JsonParseException, JsonMappingException, IOException {
 	    ObjectMapper objectMapper = new ObjectMapper();
 	    return objectMapper.readValue(json, miClase);
