@@ -9,23 +9,30 @@ import java.net.URL;
 import java.util.Map;
 import java.util.Set;
 
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sa.bbva.got.client.exception.GotClientException;
+import com.sa.bbva.got.client.exception.RestClientException;
 
 /**
- * Cliente GOT
+ * Cliente Rest por Http
  * @author jmuseri
  *
  */
 
-public class GotRestClientService {
+public class RestClientService {
+	
+	private String restURI;	
+	
+	public RestClientService(String restURI) {
+		super();
+		this.restURI = restURI;
+	}
 	
 	
-	private String REST_URI;
-
+	
+	
 	/**
 	 * Ejecutar peticion sin parametros get.
 	 * @param oper Operacion a ejecutar.
@@ -33,8 +40,8 @@ public class GotRestClientService {
 	 * @return Object respuesta del tipo oper.getResponseClass()
 	 * @throws GotClientException
 	 */
-	public Object ejecutarServicio (GotOperationsEnum oper, Object ob ) throws GotClientException{
-		return this.ejecutarServicio(oper, null, ob);
+	public Object ejecutarServicio (GotOperationsEnum oper, Object ob ) throws RestClientException{
+		return ejecutarServicio(oper, null, ob);
 	}
 	
 	/**
@@ -44,24 +51,18 @@ public class GotRestClientService {
 	 * @return Object respuesta del tipo oper.getResponseClass()
 	 * @throws GotClientException
 	 */
-	public Object ejecutarServicio (GotOperationsEnum oper, Map<String, String> params ) throws GotClientException{
-		return this.ejecutarServicio(oper, params, null);
+	public Object ejecutarServicio (GotOperationsEnum oper, Map<String, String> params ) throws RestClientException{
+		return ejecutarServicio(oper, params, null);
 	}
+
 	
-	/**
-	 * Ejecuta peticion Rest.
-	 * @param oper Operacion a ejecutar.
-	 * @param params Parametros get para la url
-	 * @param obj Parametros post a jsonizar. 
-	 * @return Object respuesta del tipo oper.getResponseClass()
-	 * @throws GotClientException
-	 */
-	public Object ejecutarServicio (GotOperationsEnum oper,  Map<String, String> params, Object obj ) throws GotClientException{
+	
+	public Object ejecutarServicio (RestOperation oper,  Map<String, String> params, Object obj ) throws RestClientException{
 		String inputString = null;
 		int responseCode = 0;
 		Object bean = null;
 		try {
-			URL url = new URL(REST_URI+getParamReplacement(oper.getUrl(),params));
+			URL url = new URL(restURI+getParamReplacement(oper.getUrl(),params));
 			System.out.println("OP: "+url);
 			// Get an HttpURLConnection subclass object instead of URLConnection
 			HttpURLConnection myHttpConnection = (HttpURLConnection) url.openConnection();
@@ -90,10 +91,10 @@ public class GotRestClientService {
 
 				
 		}catch (Exception e) {
-			throw new GotClientException("Error while trying to invoke "+oper.getUrl()+ " "+ e.getMessage());
+			throw new RestClientException("Error while trying to invoke "+oper.getUrl()+ " "+ e.getMessage());
 		}
 		return bean;
-	}
+	}	
 	
 	
 	/**
@@ -120,10 +121,14 @@ public class GotRestClientService {
 	 * @throws JsonMappingException
 	 * @throws IOException
 	 */
-	private static <T> T mapFromJson(String json, Class<T> miClase) throws JsonParseException, JsonMappingException, IOException {
+	private <T> T mapFromJson(String json, Class<T> miClase) throws JsonParseException, JsonMappingException, IOException {
 	    ObjectMapper objectMapper = new ObjectMapper();
 	    return objectMapper.readValue(json, miClase);
 	}
+	
+	
+	
+	
 	
 	
 

@@ -7,15 +7,16 @@ import java.util.List;
 import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.service.GotOperationsEnum;
 import com.sa.bbva.got.client.service.GotRestClientService;
+import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.model.Tramite;
 import com.sa.bbva.got.model.TramiteAutorizado;
 import com.sa.bbva.got.model.TramiteDetalle;
 
 
-public class GotFempTramiteProxyService {
+public class GotTramiteProxyService {
 
 	
-	private GotRestClientService gotClient; 
+	private RestClientService gotClient; 
 	
 	/**
 	 * Add a Tramite
@@ -23,7 +24,7 @@ public class GotFempTramiteProxyService {
 	 * @param tramite
 	 */
 	public void tramiteAdd(Tramite tramite) throws GotClientException {
-
+		
 		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_ADD, tramite);
 		System.out.println(obj);
 	}

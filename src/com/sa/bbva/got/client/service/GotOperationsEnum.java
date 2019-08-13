@@ -1,6 +1,6 @@
 package com.sa.bbva.got.client.service;
 
-public enum GotOperationsEnum {
+public enum GotOperationsEnum implements RestOperation {
 
 	AUTORIZADO_ADD("/funcional/autorizado/add","POST","java.lang.Object"),
 	AUTORIZADO_DELETE("/funcional/autorizado/delete/{id}","POST","java.lang.Object"),
@@ -33,21 +33,12 @@ public enum GotOperationsEnum {
 	public String getRequestMethod() {
 		return requestMethod;
 	}
-	public void setRequestMethod(String requestMethod) {
-		this.requestMethod = requestMethod;
-	}
 	public String getUrl() {
 		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
 	}
 
 	public String getResponseClass() {
 		return responseClass;
-	}
-	public void setResponseClass(String responseClass) {
-		this.responseClass = responseClass;
 	}
 
 	private GotOperationsEnum(String url,String requestMethod, String responseClass) {

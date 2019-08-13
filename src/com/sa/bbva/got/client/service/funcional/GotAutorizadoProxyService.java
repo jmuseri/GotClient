@@ -7,15 +7,16 @@ import java.util.List;
 import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.service.GotOperationsEnum;
 import com.sa.bbva.got.client.service.GotRestClientService;
+import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.model.Autorizado;
 
 
 
-public class GotFempAutorizadoProxyService {
+public class GotAutorizadoProxyService {
 
 	
 	
-	private GotRestClientService gotClient; 
+	private RestClientService gotClient; 
 	
 	/**
 	 * Add an autorizado
