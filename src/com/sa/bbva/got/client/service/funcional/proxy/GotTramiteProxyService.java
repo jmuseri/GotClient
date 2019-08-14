@@ -1,18 +1,27 @@
-package com.sa.bbva.got.client.service.funcional;
+package com.sa.bbva.got.client.service.funcional.proxy;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 import com.sa.bbva.got.client.exception.GotClientException;
-import com.sa.bbva.got.client.service.GotOperationsEnum;
-import com.sa.bbva.got.client.service.GotRestClientService;
+import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
+import com.sa.bbva.got.client.service.funcional.GotFuncionalEnum;
 import com.sa.bbva.got.model.Tramite;
 import com.sa.bbva.got.model.TramiteAutorizado;
 import com.sa.bbva.got.model.TramiteDetalle;
 
 
+/*
+ * 
+ * TODO NO OLVIDAR DE ARROJAR LA GotClientException EN
+ * 		TODOS LOS METODOS CACHEADOS !!!!!!
+ * 
+ * 		!!!!!!!!!!!!!!!!!!!
+ * 
+ * 		!!!!!!!!!!!!!!!!!!!!!
+ */
 public class GotTramiteProxyService {
 
 	
@@ -25,8 +34,14 @@ public class GotTramiteProxyService {
 	 */
 	public void tramiteAdd(Tramite tramite) throws GotClientException {
 		
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_ADD, tramite);
-		System.out.println(obj);
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_ADD, tramite);
+			System.out.println(obj);
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -38,7 +53,12 @@ public class GotTramiteProxyService {
 		HashMap<String,String> params = new HashMap<String, String>();
 		params = new HashMap<String, String>();
 		params.put("id",Integer.toString(tramiteId));
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_DELETE, params);
+		try {
+			Object obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DELETE, params);
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -51,8 +71,14 @@ public class GotTramiteProxyService {
 		HashMap<String,String> params = new HashMap<String, String>();
 		
 		Tramite[] trArray= {}; 
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_LIST, params);
-		trArray = (Tramite[])obj;
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_LIST, params);
+			trArray = (Tramite[])obj;
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return Arrays.asList(trArray);
 	}
 	
@@ -67,9 +93,15 @@ public class GotTramiteProxyService {
 	public Tramite tramiteShow(int tramiteId)  throws GotClientException {
 		HashMap<String,String> params = new HashMap<String, String>();
 		params.put("id",Integer.toString(tramiteId));
-		Tramite tramite;
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_SHOW, params);
-		tramite = (Tramite)obj;
+		Tramite tramite = null;
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_SHOW, params);
+			tramite = (Tramite)obj;
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return tramite;
 		
 	}
@@ -82,8 +114,14 @@ public class GotTramiteProxyService {
 	public void tramiteUpdate(Tramite tramite)  throws GotClientException{
 		HashMap<String,String> params = new HashMap<String, String>();
 		params.put("id",tramite.getId().toString());
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_UPDATE,params, tramite);
-		System.out.println(obj);
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_UPDATE,params, tramite);
+			System.out.println(obj);      
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -95,8 +133,14 @@ public class GotTramiteProxyService {
 	 */
 	public void tramiteAutorizadoAdd(TramiteAutorizado tramiteAutorizado) throws GotClientException {
 
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_AUTORIZADO_ADD, tramiteAutorizado);
-		System.out.println(obj);
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_AUTORIZADO_ADD, tramiteAutorizado);
+			System.out.println(obj);
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -108,7 +152,12 @@ public class GotTramiteProxyService {
 		HashMap<String,String> params = new HashMap<String, String>();
 		params = new HashMap<String, String>();
 		params.put("id",Integer.toString(tramiteAutorizadoId));
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_AUTORIZADO_DELETE, params);
+		try {
+			Object obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_AUTORIZADO_DELETE, params);
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -122,8 +171,14 @@ public class GotTramiteProxyService {
 		HashMap<String,String> params = new HashMap<String, String>();
 
 		TramiteAutorizado[] tramiteAutArray= {}; 
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_AUTORIZADO_LIST, params);
-		tramiteAutArray = (TramiteAutorizado[])obj;
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_AUTORIZADO_LIST, params);
+			tramiteAutArray = (TramiteAutorizado[])obj;
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return Arrays.asList(tramiteAutArray);
 	}
 	
@@ -133,8 +188,14 @@ public class GotTramiteProxyService {
 	 * @param tramite
 	 */
 	public void tramiteDetalleAdd(TramiteDetalle tramiteDetalle) throws GotClientException {
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_DETALLE_ADD, tramiteDetalle);
-		System.out.println(obj);
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_ADD, tramiteDetalle);
+			System.out.println(obj);
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -146,7 +207,12 @@ public class GotTramiteProxyService {
 		HashMap<String,String> params = new HashMap<String, String>();
 		params = new HashMap<String, String>();
 		params.put("id",Integer.toString(tramiteDetalleId));
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_DETALLE_DELETE, params);
+		try {
+			Object obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_DELETE, params);
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -160,8 +226,14 @@ public class GotTramiteProxyService {
 		HashMap<String,String> params = new HashMap<String, String>();
 		
 		TramiteDetalle[] autArray= {}; 
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_DETALLE_LIST, params);
-		autArray = (TramiteDetalle[])obj;
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_LIST, params);
+			autArray = (TramiteDetalle[])obj;
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return Arrays.asList(autArray);
 	}
 	
@@ -176,8 +248,14 @@ public class GotTramiteProxyService {
 		HashMap<String,String> params = new HashMap<String, String>();
 		params.put("id",Integer.toString(tramiteId));
 		TramiteDetalle[] tramiteDetalleArray= {}; 
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_DETALLE_LIST_BYID, params);
-		tramiteDetalleArray = (TramiteDetalle[])obj;
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_LIST_BYID, params);
+			tramiteDetalleArray = (TramiteDetalle[])obj;
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return Arrays.asList(tramiteDetalleArray);
 	}
 	
@@ -196,9 +274,15 @@ public class GotTramiteProxyService {
 	public TramiteDetalle tramiteDetalleShow(int tramiteDetalleId)  throws GotClientException {
 		HashMap<String,String> params = new HashMap<String, String>();
 		params.put("id",Integer.toString(tramiteDetalleId));
-		TramiteDetalle tramiteDetalle;
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_DETALLE_SHOW, params);
-		tramiteDetalle = (TramiteDetalle)obj;
+		TramiteDetalle tramiteDetalle = null;
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_SHOW, params);
+			tramiteDetalle = (TramiteDetalle)obj;
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return tramiteDetalle;
 		
 	}
@@ -211,12 +295,14 @@ public class GotTramiteProxyService {
 	public void tramiteDetalleUpdate(TramiteDetalle tramiteDetalle)  throws GotClientException{
 		HashMap<String,String> params = new HashMap<String, String>();
 		params.put("id",tramiteDetalle.getId().toString());
-		Object obj = gotClient.ejecutarServicio(GotOperationsEnum.TRAMITE_DETALLE_UPDATE,params, tramiteDetalle);
-		System.out.println(obj);
-	  
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_UPDATE,params, tramiteDetalle);
+			System.out.println(obj);
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
-	
-	
-	
 	
 }

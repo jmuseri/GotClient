@@ -40,7 +40,7 @@ public class RestClientService {
 	 * @return Object respuesta del tipo oper.getResponseClass()
 	 * @throws GotClientException
 	 */
-	public Object ejecutarServicio (GotOperationsEnum oper, Object ob ) throws RestClientException{
+	public Object ejecutarServicio (RestOperation oper, Object ob ) throws RestClientException{
 		return ejecutarServicio(oper, null, ob);
 	}
 	
@@ -51,7 +51,7 @@ public class RestClientService {
 	 * @return Object respuesta del tipo oper.getResponseClass()
 	 * @throws GotClientException
 	 */
-	public Object ejecutarServicio (GotOperationsEnum oper, Map<String, String> params ) throws RestClientException{
+	public Object ejecutarServicio (RestOperation oper, Map<String, String> params ) throws RestClientException{
 		return ejecutarServicio(oper, params, null);
 	}
 
