@@ -10,6 +10,7 @@ import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.funcional.GotFuncionalEnum;
 import com.sa.bbva.got.model.Tramite;
 import com.sa.bbva.got.model.TramiteAutorizado;
+import com.sa.bbva.got.model.TramiteAutorizadoKey;
 import com.sa.bbva.got.model.TramiteDetalle;
 
 
@@ -148,10 +149,11 @@ public class GotTramiteProxyService {
 	 * @param gotClient
 	 * @param lastId
 	 */
-	public void tramiteAutorizadoDelete(int tramiteAutorizadoId) throws GotClientException {
+	public void tramiteAutorizadoDelete(TramiteAutorizadoKey key) throws GotClientException {
 		HashMap<String,String> params = new HashMap<String, String>();
 		params = new HashMap<String, String>();
-		params.put("id",Integer.toString(tramiteAutorizadoId));
+		params.put("tramiteId",Integer.toString(key.getTramiteId()));
+		params.put("autorizadoId",Integer.toString(key.getAutorizadoId()));
 		try {
 			Object obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_AUTORIZADO_DELETE, params);
 		} catch (RestClientException e) {
