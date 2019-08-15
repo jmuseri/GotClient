@@ -106,7 +106,7 @@ public class RestClientService {
 			Set<String> mapKeys = params.keySet();
 			StringBuffer paramAdicionales =new StringBuffer();
 	        for (String key : mapKeys) {
-	        	if (opUrl.contains("\\{" + key + "\\}")) {
+	        	if (opUrl.contains("{" + key + "}")) {
 	        		opUrl = opUrl.replaceAll("\\{" + key + "\\}", params.get(key));	
 	        	} else {
 	        		paramAdicionales.append(key)
@@ -116,7 +116,7 @@ public class RestClientService {
 	        	}
 	        }
 	        if (paramAdicionales.length()>0) {
-	        		opUrl.concat("?")
+	        		opUrl = opUrl.concat("?")
 	        		.concat(paramAdicionales.substring(0, paramAdicionales.lastIndexOf("&")));
 	        }
 		}        

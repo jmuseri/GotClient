@@ -9,21 +9,21 @@ import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.funcional.GotFuncionalEnum;
 import com.sa.bbva.got.model.Autorizado;
-/*
- * 
- * TODO NO OLVIDAR DE ARROJAR LA GotClientException EN
- * 		TODOS LOS METODOS CACHEADOS !!!!!!
- * 
- * 		!!!!!!!!!!!!!!!!!!!
- * 
- * 		!!!!!!!!!!!!!!!!!!!!!
- */
+
 public class GotAutorizadoProxyService {
 
 	
 	
-	private RestClientService gotClient; 
+	private RestClientService gotClient;  
 	
+	
+	protected GotAutorizadoProxyService() {
+	}
+	
+	public GotAutorizadoProxyService(String restUri) {
+		gotClient= new RestClientService(restUri);
+	}
+
 	/**
 	 * Add an autorizado
 	 * @param gotClient
@@ -35,7 +35,7 @@ public class GotAutorizadoProxyService {
 			obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_ADD, autorizado);
 			System.out.println(obj);
 		} catch (RestClientException e) {
-			e.printStackTrace();
+			throw new GotClientException(e.getMessage());
 		}
 	}
 
@@ -46,12 +46,11 @@ public class GotAutorizadoProxyService {
 	 */
 	public void autorizadoDelete(int autorizadoId) throws GotClientException {
 		HashMap<String,String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
 		params.put("id",Integer.toString(autorizadoId));
 		try {
-			Object obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_DELETE, params);
+			gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_DELETE, params);
 		} catch (RestClientException e) {
-			e.printStackTrace();
+			throw new GotClientException(e.getMessage());
 		}
 	}
 	
@@ -61,16 +60,16 @@ public class GotAutorizadoProxyService {
 	 * @return
 	 * @throws GotClientException
 	 */
-	public List<Autorizado> autorizadoList() throws GotClientException{
+	public List<Autorizado> autorizadoList(int clienteId) throws GotClientException{
 		HashMap<String,String> params = new HashMap<String, String>();
-		
+		params.put("cliente",Integer.toString(clienteId));
 		Autorizado[] autArray= {}; 
 		Object obj;
 		try {
 			obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_LIST, params);
 			autArray = (Autorizado[])obj;
 		} catch (RestClientException e) {
-			e.printStackTrace();
+			throw new GotClientException(e.getMessage());
 		}
 		return Arrays.asList(autArray);
 	}
@@ -92,7 +91,7 @@ public class GotAutorizadoProxyService {
 			obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_SHOW, params);
 			autorizado = (Autorizado)obj;
 		} catch (RestClientException e) {
-			e.printStackTrace();
+			throw new GotClientException(e.getMessage());
 		}
 		return autorizado;
 		
@@ -111,7 +110,7 @@ public class GotAutorizadoProxyService {
 			obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_UPDATE,params, autorizado);
 			System.out.println(obj);
 		} catch (RestClientException e) {
-			e.printStackTrace();
+			throw new GotClientException(e.getMessage());
 		}
 	}
 }
