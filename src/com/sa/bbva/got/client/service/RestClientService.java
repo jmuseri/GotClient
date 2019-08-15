@@ -104,8 +104,20 @@ public class RestClientService {
 	private String getParamReplacement(String opUrl, Map<String, String> params) {
 		if (params !=null){
 			Set<String> mapKeys = params.keySet();
+			StringBuffer paramAdicionales =new StringBuffer();
 	        for (String key : mapKeys) {
-	        	opUrl = opUrl.replaceAll("\\{" + key + "\\}", params.get(key));
+	        	if (opUrl.contains("\\{" + key + "\\}")) {
+	        		opUrl = opUrl.replaceAll("\\{" + key + "\\}", params.get(key));	
+	        	} else {
+	        		paramAdicionales.append(key)
+		        		.append("=")
+		        		.append(params.get(key))
+		        		.append("&");
+	        	}
+	        }
+	        if (paramAdicionales.length()>0) {
+	        		opUrl.concat("?")
+	        		.concat(paramAdicionales.substring(0, paramAdicionales.lastIndexOf("&")));
 	        }
 		}        
 		return opUrl;
