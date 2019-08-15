@@ -23,6 +23,10 @@ public class GotComisionProxyService {
 
 	private RestClientService gotClient;
 
+	public GotComisionProxyService(String restUri) {
+		gotClient = new RestClientService(restUri);
+	}
+
 	/**
 	 * Add a Comision
 	 * 

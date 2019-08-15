@@ -8,7 +8,6 @@ import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.parametria.GotParametriaEnum;
-import com.sa.bbva.got.model.EstadoTramite;
 import com.sa.bbva.got.model.Sector;
 
 /*
@@ -23,6 +22,10 @@ import com.sa.bbva.got.model.Sector;
 public class GotSectorProxyService {
 
 	private RestClientService gotClient;
+
+	public GotSectorProxyService(String restUri) {
+		gotClient = new RestClientService(restUri);
+	}
 
 	/**
 	 * Add a Sector

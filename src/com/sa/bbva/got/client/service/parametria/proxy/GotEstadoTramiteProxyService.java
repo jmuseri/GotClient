@@ -22,6 +22,10 @@ import com.sa.bbva.got.model.EstadoTramite;
 public class GotEstadoTramiteProxyService {
 
 	private RestClientService gotClient;
+	
+	public GotEstadoTramiteProxyService(String restUri) {
+		gotClient = new RestClientService(restUri);
+	}
 
 	/**
 	 * Add a Estado Tramite

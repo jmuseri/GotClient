@@ -23,6 +23,10 @@ public class GotCampoDisponibleProxyService {
 
 	private RestClientService gotClient;
 
+	public GotCampoDisponibleProxyService(String restUri) {
+		gotClient = new RestClientService(restUri);
+	}
+
 	/**
 	 * Add a Campo Disponible
 	 * 

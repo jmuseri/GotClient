@@ -7,13 +7,10 @@ import java.util.List;
 import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
-import com.sa.bbva.got.client.service.funcional.GotFuncionalEnum;
 import com.sa.bbva.got.client.service.parametria.GotParametriaEnum;
 import com.sa.bbva.got.model.Comision;
 import com.sa.bbva.got.model.TipoTramite;
 import com.sa.bbva.got.model.TipoTramiteCampo;
-import com.sa.bbva.got.model.Tramite;
-import com.sa.bbva.got.model.TramiteDetalle;
 
 /*
  * 
@@ -27,6 +24,10 @@ import com.sa.bbva.got.model.TramiteDetalle;
 public class GotTipoTramiteProxyService {
 
 	private RestClientService gotClient;
+
+	public GotTipoTramiteProxyService(String restUri) {
+		gotClient = new RestClientService(restUri);
+	}
 
 	/**
 	 * Add a Tipo Tramite
@@ -70,10 +71,11 @@ public class GotTipoTramiteProxyService {
 	 * @param gotClient
 	 * @param lastId
 	 */
-	public void tipoTramiteCampoDelete(int tipoTramiteCampoId) throws GotClientException {
+	public void tipoTramiteCampoDelete(int tipoTramiteCampoId, int campoDisponibleId) throws GotClientException {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params = new HashMap<String, String>();
 		params.put("id", Integer.toString(tipoTramiteCampoId));
+		params.put("campoDisponibleId", Integer.toString(campoDisponibleId));
 		try {
 			Object obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_DELETE, params);
 		} catch (RestClientException e) {
@@ -133,9 +135,11 @@ public class GotTipoTramiteProxyService {
 	 * @param tramiteDetalle
 	 * @throws GotClientException
 	 */
-	public void tipoTramiteCampoUpdate(TipoTramiteCampo tipoTramiteCampo) throws GotClientException {
+	public void tipoTramiteCampoUpdate(TipoTramiteCampo tipoTramiteCampo, int campoDisponibleId)
+			throws GotClientException {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("id", tipoTramiteCampo.getId().toString());
+		params.put("campoDisponibleId", Integer.toString(campoDisponibleId));
 		Object obj;
 		try {
 			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_UPDATE, params, tipoTramiteCampo);
