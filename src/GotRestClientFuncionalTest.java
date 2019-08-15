@@ -115,7 +115,7 @@ public class GotRestClientFuncionalTest {
 		    List<TramiteAutorizado>tramiteAutorizados = null;
 		    		
     		try {
-				tramiteAutorizados =	tramiteProxy.tramiteAutorizadoList(ultTramite.getId());
+				tramiteAutorizados =	tramiteProxy.tramiteAutorizadoList(1);
 			} catch (GotClientException e) {
 				System.out.println(e.getMessage());
 			}
@@ -134,7 +134,7 @@ public class GotRestClientFuncionalTest {
 			}
 			
 			try {
-			tramiteProxy.tramiteDelete(ultTramite.getId());
+				tramiteProxy.tramiteDelete(ultTramite.getId());
 			} catch (GotClientException e) {
 				System.out.println(e.getMessage());
 			}

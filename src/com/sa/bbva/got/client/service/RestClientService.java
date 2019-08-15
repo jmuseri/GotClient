@@ -8,6 +8,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -101,7 +103,7 @@ public class RestClientService {
 	 * Arma la url del request con los parametros (get)
 	 * 
 	 */
-	private String getParamReplacement(String opUrl, Map<String, String> params) {
+	private String getParamReplacement(String opUrl, Map<String, String> params) throws RestClientException{
 		if (params !=null){
 			Set<String> mapKeys = params.keySet();
 			StringBuffer paramAdicionales =new StringBuffer();
@@ -119,7 +121,20 @@ public class RestClientService {
 	        		opUrl = opUrl.concat("?")
 	        		.concat(paramAdicionales.substring(0, paramAdicionales.lastIndexOf("&")));
 	        }
-		}        
+		}
+		
+		// se fija si queda algun parametro requerido pendiente.
+		StringBuffer paramsPendientes = new StringBuffer();
+		Pattern logEntry = Pattern.compile("\\{(.*?)\\}");
+        Matcher matchPattern = logEntry.matcher(opUrl);
+        while(matchPattern.find()) {
+        	paramsPendientes.append(matchPattern.group(1)+" ");
+        }
+
+		if (paramsPendientes.length()!=0) {	 
+			throw new RestClientException ("El/Los parámetro(s) [ "+ paramsPendientes +" ] son requeridos.");
+		}
+			
 		return opUrl;
 	}	
 	
