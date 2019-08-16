@@ -135,14 +135,13 @@ public class GotTipoTramiteProxyService {
 	 * @param tramiteDetalle
 	 * @throws GotClientException
 	 */
-	public void tipoTramiteCampoUpdate(TipoTramiteCampo tipoTramiteCampo, int campoDisponibleId)
-			throws GotClientException {
+	public void tipoTramiteCampoUpdate(int tipoTramiteid, int campoDisponibleId) throws GotClientException {
 		HashMap<String, String> params = new HashMap<String, String>();
-		params.put("id", tipoTramiteCampo.getId().toString());
+		params.put("id", Integer.toString(tipoTramiteid));
 		params.put("campoDisponibleId", Integer.toString(campoDisponibleId));
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_UPDATE, params, tipoTramiteCampo);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_UPDATE, params);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
