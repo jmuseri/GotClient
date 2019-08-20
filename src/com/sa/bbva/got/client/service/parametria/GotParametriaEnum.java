@@ -34,7 +34,7 @@ public enum GotParametriaEnum implements RestOperation {
 	TIPOTRAMITECAMPO_LIST("/parametria/tipoTramite/campoDisponible/list", "GET", "[Lcom.sa.bbva.got.model.TipoTramiteCampo;"),
 	TIPOTRAMITECAMPOID_LIST("/parametria/tipoTramite/campoDisponible/list/{id}", "GET", "[Lcom.sa.bbva.got.model.TipoTramiteCampo;"),
 	TIPOTRAMITECAMPO_UPDATE("/parametria/tipoTramite/campoDisponible/update/{tipoTramiteid}/{campoDisponibleId}", "POST", "java.lang.Object"),
-	TIPOTRAMITECOMISION_ADD("/parametria/tipoTramite/comision/update", "POST", "java.lang.Object"),
+	TIPOTRAMITECOMISION_ADD("/parametria/tipoTramite/comision/add", "POST", "java.lang.Object"),
 	TIPOTRAMITECOMISION_DELETE("/parametria/tipoTramite/comision/delete/{id}", "POST", "java.lang.Object"),
 	TIPOTRAMITECOMISION_SHOW("/parametria/tipoTramite/comision/show/{id}", "GET", "com.sa.bbva.got.model.Comision"),
 	TIPOTRAMITE_DELETE("/parametria/tipoTramite/delete/{id}", "POST", "java.lang.Object"),

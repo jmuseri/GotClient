@@ -56,8 +56,8 @@ public class GotRestClientFuncionalTest {
 
 		Autorizado autorizado = new Autorizado();
 		autorizado.setApellido("Lopez");
-		autorizado.setClienteId(0);
-		// autorizado.setId(9);
+		autorizado.setClienteId(1);
+		autorizado.setId(9);
 		autorizado.setNombre("Jony");
 		autorizado.setNroDocumento("28169773");
 		autorizado.setTipoDocumento("DNI");
@@ -69,11 +69,13 @@ public class GotRestClientFuncionalTest {
 		}
 		List<Autorizado> autorizados = null;
 		try {
-			autorizados = autorizadoProxy.autorizadoList(3534520);
+			autorizados = autorizadoProxy.autorizadoList(1);
 		} catch (GotClientException e) {
 			System.out.println(e.getMessage());
 		}
-		int lastId = autorizados.get(autorizados.size() - 1).getId();
+		int lastId = 9;
+		if (!autorizados.isEmpty())
+			lastId = autorizados.get(autorizados.size() - 1).getId();
 
 		Autorizado autorizadoShow = null;
 
@@ -95,7 +97,7 @@ public class GotRestClientFuncionalTest {
 		}
 
 		try {
-			autorizadoProxy.autorizadoDelete(lastId);
+			autorizadoProxy.autorizadoDelete(1, lastId);
 		} catch (GotClientException e) {
 			System.out.println(e.getMessage());
 		}
@@ -137,19 +139,22 @@ public class GotRestClientFuncionalTest {
 			System.out.println(e.getMessage());
 		}
 
-		TramiteAutorizado trAut = tramiteAutorizados.get(tramiteAutorizados.size() - 1);// Para agregar copio el ultimo.
+		TramiteAutorizado trAut = null;
+		if (!tramiteAutorizados.isEmpty()) {
+			trAut = tramiteAutorizados.get(tramiteAutorizados.size() - 1);// Para agregar copio el ultimo.
 
-		try {
-			tramiteProxy.tramiteAutorizadoAdd(trAut);
-		} catch (GotClientException e) {
-			System.out.println(e.getMessage());
-		}
-		try {
-			tramiteProxy.tramiteAutorizadoDelete(trAut.getId());
-		} catch (GotClientException e) {
-			System.out.println(e.getMessage());
-		}
+			try {
+				tramiteProxy.tramiteAutorizadoAdd(trAut);
+			} catch (GotClientException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				tramiteProxy.tramiteAutorizadoDelete(trAut.getId());
+			} catch (GotClientException e) {
+				System.out.println(e.getMessage());
+			}
 
+		}
 		try {
 			tramiteProxy.tramiteDelete(ultTramite.getId());
 		} catch (GotClientException e) {
@@ -266,7 +271,7 @@ public class GotRestClientFuncionalTest {
 		tipoTramite.setHorasVencimiento(new Long("10000"));
 		tipoTramite.setRequiereDocumentacion(true);
 		tipoTramite.setSectorInicial(new Sector());
-		
+
 		TipoTramiteCampo tipoTramiteCampo = new TipoTramiteCampo();
 		tipoTramiteCampo.setActivo(true);
 		tipoTramiteCampo.setId(new TipoTramiteCampoKey(1, 1));
