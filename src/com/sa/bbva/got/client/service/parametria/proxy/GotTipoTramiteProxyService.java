@@ -215,9 +215,9 @@ public class GotTipoTramiteProxyService {
 	 * @return
 	 * @throws GotClientException
 	 */
-	public List<TipoTramite> tipoTramiteListById(int tipoTramiteId) throws GotClientException {
+	public List<TipoTramite> tipoTramiteListById() throws GotClientException {
 		HashMap<String, String> params = new HashMap<String, String>();
-		params.put("id", Integer.toString(tipoTramiteId));
+
 		TipoTramite[] tipoTramiteArray = {};
 		Object obj;
 		try {
