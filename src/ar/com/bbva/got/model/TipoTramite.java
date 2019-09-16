@@ -1,37 +1,46 @@
-package com.sa.bbva.got.model;
+package ar.com.bbva.got.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import javax.xml.bind.annotation.XmlRootElement;
+public class TipoTramite {
+    public TipoTramite(Integer id, String descripcion, boolean cobraComision, Comision comision,
+			boolean requiereDocumentacion, boolean activo, boolean autorizado, Sector sectorInicial,
+			Set<TipoTramiteCampo> campos, Long horasResolucion, Long horasVencimiento, String usuAlta, Date fechaAlta,
+			String usuModif, Date fechaModif) {
+		super();
+		this.id = id;
+		this.descripcion = descripcion;
+		this.cobraComision = cobraComision;
+		this.comision = comision;
+		this.requiereDocumentacion = requiereDocumentacion;
+		this.activo = activo;
+		this.autorizado = autorizado;
+		this.sectorInicial = sectorInicial;
+		this.campos = campos;
+		this.horasResolucion = horasResolucion;
+		this.horasVencimiento = horasVencimiento;
+		this.usuAlta = usuAlta;
+		this.fechaAlta = fechaAlta;
+		this.usuModif = usuModif;
+		this.fechaModif = fechaModif;
+	}
 
-
-@XmlRootElement
-public class TipoTramite implements Serializable{
-
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+	public TipoTramite() {
+		// TODO Auto-generated constructor stub
+	}
 
 	private Integer id;
 
-
     private String descripcion;
-
 
     private boolean cobraComision;
 
     private Comision comision;
 
-
     private boolean requiereDocumentacion;
 
-
     private boolean activo;
-
 
     private boolean autorizado;
 
@@ -169,43 +178,6 @@ public class TipoTramite implements Serializable{
 
 	public void setFechaModif(Date fechaModif) {
 		this.fechaModif = fechaModif;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("TipoTramite [id=");
-		builder.append(id);
-		builder.append(", descripcion=");
-		builder.append(descripcion);
-		builder.append(", cobraComision=");
-		builder.append(cobraComision);
-		builder.append(", comision=");
-		builder.append(comision);
-		builder.append(", requiereDocumentacion=");
-		builder.append(requiereDocumentacion);
-		builder.append(", activo=");
-		builder.append(activo);
-		builder.append(", autorizado=");
-		builder.append(autorizado);
-		builder.append(", sectorInicial=");
-		builder.append(sectorInicial);
-		builder.append(", campos=");
-		builder.append(campos);
-		builder.append(", horasResolucion=");
-		builder.append(horasResolucion);
-		builder.append(", horasVencimiento=");
-		builder.append(horasVencimiento);
-		builder.append(", usuAlta=");
-		builder.append(usuAlta);
-		builder.append(", fechaAlta=");
-		builder.append(fechaAlta);
-		builder.append(", usuModif=");
-		builder.append(usuModif);
-		builder.append(", fechaModif=");
-		builder.append(fechaModif);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

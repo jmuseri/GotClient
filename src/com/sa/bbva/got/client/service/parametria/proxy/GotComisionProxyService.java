@@ -8,7 +8,8 @@ import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.parametria.GotParametriaEnum;
-import com.sa.bbva.got.model.Comision;
+
+import ar.com.bbva.got.model.Comision;
 
 /*
  * 
@@ -55,7 +56,7 @@ public class GotComisionProxyService {
 		params = new HashMap<String, String>();
 		params.put("id", Integer.toString(comisionId));
 		try {
-			Object obj = gotClient.ejecutarServicio(GotParametriaEnum.COMISION_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.COMISION_DELETE, params);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

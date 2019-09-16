@@ -1,17 +1,31 @@
-package com.sa.bbva.got.model;
+package ar.com.bbva.got.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
-public class Tramite implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Tramite {
+    public Tramite(Integer id, TipoTramite tipoTramite, Integer clienteId, Set<TramiteAutorizado> autorizado,
+			Sector sectorInicio, Sector sectorActual, Set<TramiteDetalle> detalle, String cuentaCobro,
+			EstadoTramite estado, Date fechaFinalizacion, Date fechaInicio, Date fechaVencimiento, String usuAlta,
+			Date fechaAlta, String usuModif, Date fechaModif) {
+		super();
+		this.id = id;
+		this.tipoTramite = tipoTramite;
+		this.clienteId = clienteId;
+		this.autorizado = autorizado;
+		this.sectorInicio = sectorInicio;
+		this.sectorActual = sectorActual;
+		this.detalle = detalle;
+		this.cuentaCobro = cuentaCobro;
+		this.estado = estado;
+		this.fechaFinalizacion = fechaFinalizacion;
+		this.fechaInicio = fechaInicio;
+		this.fechaVencimiento = fechaVencimiento;
+		this.usuAlta = usuAlta;
+		this.fechaAlta = fechaAlta;
+		this.usuModif = usuModif;
+		this.fechaModif = fechaModif;
+	}
 
 	private Integer id;
 
@@ -171,44 +185,5 @@ public class Tramite implements Serializable {
 
 	public void setFechaModif(Date fechaModif) {
 		this.fechaModif = fechaModif;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Tramite [id=");
-		builder.append(id);
-		builder.append(", tipoTramite=");
-		builder.append(tipoTramite);
-		builder.append(", clienteId=");
-		builder.append(clienteId);
-		builder.append(", autorizado=");
-		builder.append(autorizado);
-		builder.append(", sectorInicio=");
-		builder.append(sectorInicio);
-		builder.append(", sectorActual=");
-		builder.append(sectorActual);
-		builder.append(", detalle=");
-		builder.append(detalle);
-		builder.append(", cuentaCobro=");
-		builder.append(cuentaCobro);
-		builder.append(", estado=");
-		builder.append(estado);
-		builder.append(", fechaFinalizacion=");
-		builder.append(fechaFinalizacion);
-		builder.append(", fechaInicio=");
-		builder.append(fechaInicio);
-		builder.append(", fechaVencimiento=");
-		builder.append(fechaVencimiento);
-		builder.append(", usuAlta=");
-		builder.append(usuAlta);
-		builder.append(", fechaAlta=");
-		builder.append(fechaAlta);
-		builder.append(", usuModif=");
-		builder.append(usuModif);
-		builder.append(", fechaModif=");
-		builder.append(fechaModif);
-		builder.append("]");
-		return builder.toString();
 	}
 }

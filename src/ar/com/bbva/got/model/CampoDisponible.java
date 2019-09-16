@@ -1,14 +1,24 @@
-package com.sa.bbva.got.model;
+package ar.com.bbva.got.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
-public class CampoDisponible implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class CampoDisponible {
+    public CampoDisponible(Integer id, String nombre, String descripcion, String tipoDato, boolean activo,
+			String usuAlta, Date fechaAlta, String usuModif, Date fechaModif) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.tipoDato = tipoDato;
+		this.activo = activo;
+		this.usuAlta = usuAlta;
+		this.fechaAlta = fechaAlta;
+		this.usuModif = usuModif;
+		this.fechaModif = fechaModif;
+	}
+	public CampoDisponible() {
+		// TODO Auto-generated constructor stub
+	}
 	private Integer id;
     private String nombre;
     private String descripcion;
@@ -71,29 +81,5 @@ public class CampoDisponible implements Serializable {
 	}
 	public void setFechaModif(Date fechaModif) {
 		this.fechaModif = fechaModif;
-	}
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("CampoDisponible [id=");
-		builder.append(id);
-		builder.append(", nombre=");
-		builder.append(nombre);
-		builder.append(", descripcion=");
-		builder.append(descripcion);
-		builder.append(", tipoDato=");
-		builder.append(tipoDato);
-		builder.append(", activo=");
-		builder.append(activo);
-		builder.append(", usuAlta=");
-		builder.append(usuAlta);
-		builder.append(", fechaAlta=");
-		builder.append(fechaAlta);
-		builder.append(", usuModif=");
-		builder.append(usuModif);
-		builder.append(", fechaModif=");
-		builder.append(fechaModif);
-		builder.append("]");
-		return builder.toString();
 	}
 }

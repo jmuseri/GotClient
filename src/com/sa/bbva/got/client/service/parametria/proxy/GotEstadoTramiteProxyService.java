@@ -8,7 +8,8 @@ import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.parametria.GotParametriaEnum;
-import com.sa.bbva.got.model.EstadoTramite;
+
+import ar.com.bbva.got.model.EstadoTramite;
 
 /*
  * 
@@ -55,7 +56,7 @@ public class GotEstadoTramiteProxyService {
 		params = new HashMap<String, String>();
 		params.put("id", Integer.toString(estadoTramiteId));
 		try {
-			Object obj = gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_DELETE, params);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -114,7 +115,7 @@ public class GotEstadoTramiteProxyService {
 	 */
 	public void estadoTramiteUpdate(EstadoTramite estadoTramite) throws GotClientException {
 		HashMap<String, String> params = new HashMap<String, String>();
-		params.put("id", estadoTramite.getId().toString());
+		params.put("id", estadoTramite.toString());
 		Object obj;
 		try {
 			obj = gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_UPDATE, params, estadoTramite);

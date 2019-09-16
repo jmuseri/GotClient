@@ -8,7 +8,8 @@ import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.parametria.GotParametriaEnum;
-import com.sa.bbva.got.model.Sector;
+
+import ar.com.bbva.got.model.Sector;
 
 /*
  * 
@@ -55,7 +56,7 @@ public class GotSectorProxyService {
 		params = new HashMap<String, String>();
 		params.put("id", Integer.toString(sectorId));
 		try {
-			Object obj = gotClient.ejecutarServicio(GotParametriaEnum.SECTOR_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.SECTOR_DELETE, params);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,18 +1,15 @@
-package com.sa.bbva.got.model;
+package ar.com.bbva.got.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-
-@XmlRootElement
-public class TramiteAutorizado implements Serializable{
-
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class TramiteAutorizado {
+    public TramiteAutorizado(TramiteAutorizadoKey id, Autorizado autorizado, String usuAlta, Date fechaAlta) {
+		super();
+		this.id = id;
+		this.autorizado = autorizado;
+		this.usuAlta = usuAlta;
+		this.fechaAlta = fechaAlta;
+	}
 
 	private TramiteAutorizadoKey id;
 
@@ -52,21 +49,6 @@ public class TramiteAutorizado implements Serializable{
 
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("TramiteAutorizado [id=");
-		builder.append(id);
-		builder.append(", autorizado=");
-		builder.append(autorizado);
-		builder.append(", usuAlta=");
-		builder.append(usuAlta);
-		builder.append(", fechaAlta=");
-		builder.append(fechaAlta);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

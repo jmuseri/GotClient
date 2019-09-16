@@ -1,27 +1,33 @@
-package com.sa.bbva.got.model;
+package ar.com.bbva.got.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
-public class Autorizado implements Serializable {
-    @Override
-	public String toString() {
-		return "Autorizado [id=" + id + ", clienteId=" + clienteId + ", tipoDocumento=" + tipoDocumento
-				+ ", nroDocumento=" + nroDocumento + ", nombre=" + nombre + ", apellido=" + apellido + ", usuAlta="
-				+ usuAlta + ", fechaAlta=" + fechaAlta + ", usuModif=" + usuModif + ", fechaModif=" + fechaModif + "]";
+public class Autorizado {
+    public Autorizado(Integer id, Integer nroClienteEmpresa, String cuitEmpresa, String tipoDocumento,
+			String nroDocumento, String nombre, String apellido, String usuAlta, Date fechaAlta, String usuModif,
+			Date fechaModif) {
+		super();
+		this.id = id;
+		this.nroClienteEmpresa = nroClienteEmpresa;
+		this.cuitEmpresa = cuitEmpresa;
+		this.tipoDocumento = tipoDocumento;
+		this.nroDocumento = nroDocumento;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.usuAlta = usuAlta;
+		this.fechaAlta = fechaAlta;
+		this.usuModif = usuModif;
+		this.fechaModif = fechaModif;
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	public Autorizado() {
+	}
 
 	private Integer id;
 
-    private Integer clienteId;
+    private Integer nroClienteEmpresa;
+    
+    private String cuitEmpresa;
 
     private String tipoDocumento;
 
@@ -47,12 +53,20 @@ public class Autorizado implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getClienteId() {
-		return clienteId;
+	public Integer getNroClienteEmpresa() {
+		return nroClienteEmpresa;
 	}
 
-	public void setClienteId(Integer clienteId) {
-		this.clienteId = clienteId;
+	public void setNroClienteEmpresa(Integer nroClienteEmpresa) {
+		this.nroClienteEmpresa = nroClienteEmpresa;
+	}
+
+	public String getCuitEmpresa() {
+		return cuitEmpresa;
+	}
+
+	public void setCuitEmpresa(String cuitEmpresa) {
+		this.cuitEmpresa = cuitEmpresa;
 	}
 
 	public String getTipoDocumento() {

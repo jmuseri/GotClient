@@ -8,9 +8,10 @@ import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.parametria.GotParametriaEnum;
-import com.sa.bbva.got.model.Comision;
-import com.sa.bbva.got.model.TipoTramite;
-import com.sa.bbva.got.model.TipoTramiteCampo;
+
+import ar.com.bbva.got.model.Comision;
+import ar.com.bbva.got.model.TipoTramite;
+import ar.com.bbva.got.model.TipoTramiteCampo;
 
 /*
  * 
@@ -77,7 +78,7 @@ public class GotTipoTramiteProxyService {
 		params.put("id", Integer.toString(tipoTramiteCampoId));
 		params.put("campoDisponibleId", Integer.toString(campoDisponibleId));
 		try {
-			Object obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_DELETE, params);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,7 +179,7 @@ public class GotTipoTramiteProxyService {
 		params = new HashMap<String, String>();
 		params.put("id", Integer.toString(tipoTramiteComisionId));
 		try {
-			Object obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECOMISION_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECOMISION_DELETE, params);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,17 +1,28 @@
-package com.sa.bbva.got.model;
+package ar.com.bbva.got.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
+public class TipoTramiteCampo {
 
-@XmlRootElement
-public class TipoTramiteCampo implements Serializable {
+    public TipoTramiteCampo(TipoTramiteCampoKey id, CampoDisponible campoDisponible, boolean obligatorio,
+			boolean activo, String nombre, String leyenda, String usuAlta, Date fechaAlta, String usuModif,
+			Date fechaModif) {
+		super();
+		this.id = id;
+		this.campoDisponible = campoDisponible;
+		this.obligatorio = obligatorio;
+		this.activo = activo;
+		this.nombre = nombre;
+		this.leyenda = leyenda;
+		this.usuAlta = usuAlta;
+		this.fechaAlta = fechaAlta;
+		this.usuModif = usuModif;
+		this.fechaModif = fechaModif;
+	}
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	public TipoTramiteCampo() {
+		// TODO Auto-generated constructor stub
+	}
 
 	private TipoTramiteCampoKey id;
 
@@ -111,33 +122,6 @@ public class TipoTramiteCampo implements Serializable {
 
 	public void setFechaModif(Date fechaModif) {
 		this.fechaModif = fechaModif;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("TipoTramiteCampo [id=");
-		builder.append(id);
-		builder.append(", campoDisponible=");
-		builder.append(campoDisponible);
-		builder.append(", obligatorio=");
-		builder.append(obligatorio);
-		builder.append(", activo=");
-		builder.append(activo);
-		builder.append(", nombre=");
-		builder.append(nombre);
-		builder.append(", leyenda=");
-		builder.append(leyenda);
-		builder.append(", usuAlta=");
-		builder.append(usuAlta);
-		builder.append(", fechaAlta=");
-		builder.append(fechaAlta);
-		builder.append(", usuModif=");
-		builder.append(usuModif);
-		builder.append(", fechaModif=");
-		builder.append(fechaModif);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

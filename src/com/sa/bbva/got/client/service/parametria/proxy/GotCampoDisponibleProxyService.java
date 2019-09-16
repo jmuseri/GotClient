@@ -8,7 +8,8 @@ import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.parametria.GotParametriaEnum;
-import com.sa.bbva.got.model.CampoDisponible;
+
+import ar.com.bbva.got.model.CampoDisponible;
 
 /*
  * 
@@ -55,7 +56,7 @@ public class GotCampoDisponibleProxyService {
 		params = new HashMap<String, String>();
 		params.put("id", Integer.toString(campoDisponibleId));
 		try {
-			Object obj = gotClient.ejecutarServicio(GotParametriaEnum.CAMPODISPONIBLE_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.CAMPODISPONIBLE_DELETE, params);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

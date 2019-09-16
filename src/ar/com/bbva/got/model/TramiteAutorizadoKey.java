@@ -1,10 +1,7 @@
-package com.sa.bbva.got.model;
+package ar.com.bbva.got.model;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class TramiteAutorizadoKey implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -36,14 +33,7 @@ public class TramiteAutorizadoKey implements Serializable {
 		this.autorizadoId = autorizadoId;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("TramiteAutorizadoKey [tramiteId=");
-		builder.append(tramiteId);
-		builder.append(", autorizadoId=");
-		builder.append(autorizadoId);
-		builder.append("]");
-		return builder.toString();
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

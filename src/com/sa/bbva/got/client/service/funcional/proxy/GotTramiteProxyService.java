@@ -8,11 +8,12 @@ import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.funcional.GotFuncionalEnum;
-import com.sa.bbva.got.model.Tramite;
-import com.sa.bbva.got.model.TramiteAutorizado;
-import com.sa.bbva.got.model.TramiteAutorizadoKey;
-import com.sa.bbva.got.model.TramiteDetalle;
-import com.sa.bbva.got.model.TramiteDetalleKey;
+
+import ar.com.bbva.got.model.Tramite;
+import ar.com.bbva.got.model.TramiteAutorizado;
+import ar.com.bbva.got.model.TramiteAutorizadoKey;
+import ar.com.bbva.got.model.TramiteDetalle;
+import ar.com.bbva.got.model.TramiteDetalleKey;
 
 
 public class GotTramiteProxyService {
@@ -60,25 +61,25 @@ public class GotTramiteProxyService {
 		}
 	}
 	
-	/**
-	 * View a list of available tramite
-
-	 * @return
-	 * @throws GotClientException
-	 */
-	public List<Tramite> tramiteList() throws GotClientException{
-		HashMap<String,String> params = new HashMap<String, String>();
-		
-		Tramite[] trArray= {}; 
-		Object obj;
-		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_LIST, params);
-			trArray = (Tramite[])obj;
-		} catch (RestClientException e) {
-			throw new GotClientException(e.getMessage());
-		}
-		return Arrays.asList(trArray);
-	}
+//	/**
+//	 * View a list of available tramite
+//
+//	 * @return
+//	 * @throws GotClientException
+//	 */
+//	public List<Tramite> tramiteList() throws GotClientException{
+//		HashMap<String,String> params = new HashMap<String, String>();
+//		
+//		Tramite[] trArray= {}; 
+//		Object obj;
+//		try {
+//			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_LIST, params);
+//			trArray = (Tramite[])obj;
+//		} catch (RestClientException e) {
+//			throw new GotClientException(e.getMessage());
+//		}
+//		return Arrays.asList(trArray);
+//	}
 	
 	
 	/**

@@ -1,12 +1,15 @@
-package com.sa.bbva.got.model;
+package ar.com.bbva.got.model;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class TramiteDetalleKey implements Serializable {
-    private static final long serialVersionUID = 1L;
+    public TramiteDetalleKey(Integer tramiteId, TipoTramiteCampoKey tipoTramiteCampoId) {
+		super();
+		this.tramiteId = tramiteId;
+		this.tipoTramiteCampoId = tipoTramiteCampoId;
+	}
+
+	private static final long serialVersionUID = 1L;
 
     private Integer tramiteId;
 
@@ -36,15 +39,8 @@ public class TramiteDetalleKey implements Serializable {
 		this.tipoTramiteCampoId = tipoTramiteCampoId;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("TramiteDetalleKey [tramiteId=");
-		builder.append(tramiteId);
-		builder.append(", tipoTramiteCampoId=");
-		builder.append(tipoTramiteCampoId);
-		builder.append("]");
-		return builder.toString();
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

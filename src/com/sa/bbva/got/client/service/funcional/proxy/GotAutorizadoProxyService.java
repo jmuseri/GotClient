@@ -8,7 +8,8 @@ import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.funcional.GotFuncionalEnum;
-import com.sa.bbva.got.model.Autorizado;
+
+import ar.com.bbva.got.model.Autorizado;
 
 public class GotAutorizadoProxyService {
 

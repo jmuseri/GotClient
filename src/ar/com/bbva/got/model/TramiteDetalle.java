@@ -1,28 +1,24 @@
-package com.sa.bbva.got.model;
+package ar.com.bbva.got.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-
-@XmlRootElement
-public class TramiteDetalle implements Serializable{
-
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+public class TramiteDetalle {
+    public TramiteDetalle(TramiteDetalleKey id, String valor, String usuAlta, Date fechaAlta, String usuModif,
+			Date fechaModif) {
+		super();
+		this.id = id;
+		this.valor = valor;
+		this.usuAlta = usuAlta;
+		this.fechaAlta = fechaAlta;
+		this.usuModif = usuModif;
+		this.fechaModif = fechaModif;
+	}
 
 	private TramiteDetalleKey id;
 
-
     private String valor;
 
-
     private String usuAlta;
-
 
     private Date fechaAlta;
 
@@ -76,24 +72,5 @@ public class TramiteDetalle implements Serializable{
 
 	public void setFechaModif(Date fechaModif) {
 		this.fechaModif = fechaModif;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("TramiteDetalle [id=");
-		builder.append(id);
-		builder.append(", valor=");
-		builder.append(valor);
-		builder.append(", usuAlta=");
-		builder.append(usuAlta);
-		builder.append(", fechaAlta=");
-		builder.append(fechaAlta);
-		builder.append(", usuModif=");
-		builder.append(usuModif);
-		builder.append(", fechaModif=");
-		builder.append(fechaModif);
-		builder.append("]");
-		return builder.toString();
 	}
 }

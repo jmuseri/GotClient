@@ -1,10 +1,7 @@
-package com.sa.bbva.got.model;
+package ar.com.bbva.got.model;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class TipoTramiteCampoKey implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -36,15 +33,8 @@ public class TipoTramiteCampoKey implements Serializable {
 		this.campoDisponibleId = campoDisponibleId;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("TipoTramiteCampoKey [tipoTramiteId=");
-		builder.append(tipoTramiteId);
-		builder.append(", campoDisponibleId=");
-		builder.append(campoDisponibleId);
-		builder.append("]");
-		return builder.toString();
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }
