@@ -3,7 +3,7 @@ package ar.com.bbva.got.model;
 
 public enum EstadoTramite {
 	
-	INACTIVO,
+	PENDIENTE_FIRMA,
 	ACTIVO,
 	GESTION,
 	FINALIZADO,

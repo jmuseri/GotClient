@@ -82,8 +82,8 @@ public class GotFuncionalProxyService {
 			throws GotClientException {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("activo", Boolean.toString(activo));
-		params.put("idCanal", idCanal);
-		params.put("idSector", idSector);
+		params.put("canal", idCanal);
+		params.put("sector", idSector);
 		TipoTramiteDTO[] autArray = {};
 		Object obj;
 		try {
