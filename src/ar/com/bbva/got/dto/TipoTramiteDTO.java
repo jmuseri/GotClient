@@ -3,8 +3,6 @@ package ar.com.bbva.got.dto;
 import java.io.Serializable;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import lombok.Data;
 
 @Data

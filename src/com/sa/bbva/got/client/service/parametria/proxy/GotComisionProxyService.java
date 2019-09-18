@@ -37,7 +37,7 @@ public class GotComisionProxyService {
 	public void comisionAdd(Comision campo) throws GotClientException {
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.COMISION_ADD, campo);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.COMISION_ADD, null, campo);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -52,11 +52,11 @@ public class GotComisionProxyService {
 	 * @throws GotClientException
 	 */
 	public void comisionDelete(int comisionId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
+
 		params.put("id", Integer.toString(comisionId));
 		try {
-			gotClient.ejecutarServicio(GotParametriaEnum.COMISION_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.COMISION_DELETE, params, null);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,12 +70,12 @@ public class GotComisionProxyService {
 	 * @throws GotClientException
 	 */
 	public List<Comision> comisionList() throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 
 		Comision[] trArray = {};
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.COMISION_LIST, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.COMISION_LIST, params, null);
 			trArray = (Comision[]) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -92,12 +92,12 @@ public class GotComisionProxyService {
 	 * @throws GotClientException
 	 */
 	public Comision comisionShow(int comisionId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(comisionId));
 		Comision campo = null;
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.COMISION_SHOW, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.COMISION_SHOW, params, null);
 			campo = (Comision) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -114,7 +114,7 @@ public class GotComisionProxyService {
 	 * @throws GotClientException
 	 */
 	public void comisionUpdate(Comision comision) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", comision.getId().toString());
 		Object obj;
 		try {

@@ -40,7 +40,7 @@ public class GotTipoTramiteProxyService {
 
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITE_ADD, tipoTramite);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITE_ADD, null, tipoTramite);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -58,7 +58,7 @@ public class GotTipoTramiteProxyService {
 
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_ADD, tipoTramiteCampo);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_ADD, null, tipoTramiteCampo);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -73,12 +73,11 @@ public class GotTipoTramiteProxyService {
 	 * @param lastId
 	 */
 	public void tipoTramiteCampoDelete(int tipoTramiteCampoId, int campoDisponibleId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(tipoTramiteCampoId));
 		params.put("campoDisponibleId", Integer.toString(campoDisponibleId));
 		try {
-			gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_DELETE, params, null);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -93,12 +92,12 @@ public class GotTipoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public List<TipoTramiteCampo> tipoTramiteCampoList() throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 
 		TipoTramiteCampo[] trArray = {};
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_LIST, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_LIST, params, null);
 			trArray = (TipoTramiteCampo[]) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -115,12 +114,12 @@ public class GotTipoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public List<TipoTramiteCampo> tipoTramiteCampoListById(int tipoTramiteCampoId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(tipoTramiteCampoId));
 		TipoTramiteCampo[] tramiteCampoArray = {};
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPOID_LIST, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPOID_LIST, params, null);
 			tramiteCampoArray = (TipoTramiteCampo[]) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -137,12 +136,12 @@ public class GotTipoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public void tipoTramiteCampoUpdate(int tipoTramiteid, int campoDisponibleId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(tipoTramiteid));
 		params.put("campoDisponibleId", Integer.toString(campoDisponibleId));
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_UPDATE, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECAMPO_UPDATE, params, null);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -160,7 +159,7 @@ public class GotTipoTramiteProxyService {
 
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECOMISION_ADD, comision);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECOMISION_ADD, null, comision);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -175,11 +174,10 @@ public class GotTipoTramiteProxyService {
 	 * @param lastId
 	 */
 	public void tipoTramiteComisionDelete(int tipoTramiteComisionId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(tipoTramiteComisionId));
 		try {
-			gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECOMISION_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECOMISION_DELETE, params, null);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -195,12 +193,12 @@ public class GotTipoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public Comision tipoTramiteComisionShow(int tipoTramiteComisionId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(tipoTramiteComisionId));
 		Comision comision = null;
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECOMISION_SHOW, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITECOMISION_SHOW, params, null);
 			comision = (Comision) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -217,12 +215,12 @@ public class GotTipoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public List<TipoTramite> tipoTramiteList() throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 
 		TipoTramite[] tipoTramiteArray = {};
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITE_LIST, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITE_LIST, params, null);
 			tipoTramiteArray = (TipoTramite[]) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -240,12 +238,12 @@ public class GotTipoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public TipoTramite tipoTramiteShow(int tipoTramiteId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(tipoTramiteId));
 		TipoTramite tipoTramiteDetalle = null;
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITE_SHOW, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.TIPOTRAMITE_SHOW, params, null);
 			tipoTramiteDetalle = (TipoTramite) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -262,7 +260,7 @@ public class GotTipoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public void tipoTramiteUpdate(TipoTramite tipoTramiteDetalle) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", tipoTramiteDetalle.getId().toString());
 		Object obj;
 		try {

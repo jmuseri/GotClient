@@ -37,7 +37,7 @@ public class GotSectorProxyService {
 	public void sectorAdd(Sector sector) throws GotClientException {
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.SECTOR_ADD, sector);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.SECTOR_ADD, null, sector);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -52,11 +52,10 @@ public class GotSectorProxyService {
 	 * @throws GotClientException
 	 */
 	public void sectorDelete(int sectorId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(sectorId));
 		try {
-			gotClient.ejecutarServicio(GotParametriaEnum.SECTOR_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.SECTOR_DELETE, params, null);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,12 +69,12 @@ public class GotSectorProxyService {
 	 * @throws GotClientException
 	 */
 	public List<Sector> sectorList() throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 
 		Sector[] trArray = {};
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.SECTOR_LIST, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.SECTOR_LIST, params, null);
 			trArray = (Sector[]) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -92,12 +91,12 @@ public class GotSectorProxyService {
 	 * @throws GotClientException
 	 */
 	public Sector sectorShow(int sectorId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(sectorId));
 		Sector campo = null;
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.SECTOR_SHOW, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.SECTOR_SHOW, params, null);
 			campo = (Sector) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -114,7 +113,7 @@ public class GotSectorProxyService {
 	 * @throws GotClientException
 	 */
 	public void sectorUpdate(Sector sector) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", sector.getId().toString());
 		Object obj;
 		try {

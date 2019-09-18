@@ -39,7 +39,7 @@ public class GotTramiteProxyService {
 		
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_ADD, tramite);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_ADD, null, tramite);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -51,11 +51,10 @@ public class GotTramiteProxyService {
 	 * @param tramiteId
 	 */
 	public void tramiteDelete(int tramiteId) throws GotClientException {
-		HashMap<String,String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id",Integer.toString(tramiteId));
 		try {
-			gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DELETE, params);
+			gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DELETE, params, null);
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
 		}
@@ -68,7 +67,7 @@ public class GotTramiteProxyService {
 //	 * @throws GotClientException
 //	 */
 //	public List<Tramite> tramiteList() throws GotClientException{
-//		HashMap<String,String> params = new HashMap<String, String>();
+//		HashMap<String,Object> params = new HashMap<String, Object>();
 //		
 //		Tramite[] trArray= {}; 
 //		Object obj;
@@ -89,12 +88,12 @@ public class GotTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public Tramite tramiteShow(int tramiteId)  throws GotClientException {
-		HashMap<String,String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id",Integer.toString(tramiteId));
 		Tramite tramite = null;
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_SHOW, params);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_SHOW, params, null);
 			tramite = (Tramite)obj;
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -109,7 +108,7 @@ public class GotTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public void tramiteUpdate(Tramite tramite)  throws GotClientException{
-		HashMap<String,String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id",tramite.getId().toString());
 		Object obj;
 		try {
@@ -130,7 +129,7 @@ public class GotTramiteProxyService {
 
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_AUTORIZADO_ADD, tramiteAutorizado);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_AUTORIZADO_ADD, null, tramiteAutorizado);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -142,12 +141,11 @@ public class GotTramiteProxyService {
 	 * @param TramiteAutorizadoKey;
 	 */
 	public void tramiteAutorizadoDelete(TramiteAutorizadoKey key) throws GotClientException {
-		HashMap<String,String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("tramiteId",Integer.toString(key.getTramiteId()));
 		params.put("autorizadoId",Integer.toString(key.getAutorizadoId()));
 		try {
-			gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_AUTORIZADO_DELETE, params);
+			gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_AUTORIZADO_DELETE, params, null);
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
 		}
@@ -161,12 +159,12 @@ public class GotTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public List<TramiteAutorizado> tramiteAutorizadoList(int tramiteId) throws GotClientException{
-		HashMap<String,String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(tramiteId));
 		TramiteAutorizado[] tramiteAutArray= {}; 
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_AUTORIZADO_LIST, params);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_AUTORIZADO_LIST, params, null);
 			tramiteAutArray = (TramiteAutorizado[])obj;
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -181,7 +179,7 @@ public class GotTramiteProxyService {
 	public void tramiteDetalleAdd(TramiteDetalle tramiteDetalle) throws GotClientException {
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_ADD, tramiteDetalle);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_ADD, null, tramiteDetalle);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -193,13 +191,13 @@ public class GotTramiteProxyService {
 	 * @param tramiteDetallekey
 	 */
 	public void tramiteDetalleDelete(TramiteDetalleKey tramiteDetallekey) throws GotClientException {
-		HashMap<String,String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
+		
 		params.put("tramiteId",Integer.toString(tramiteDetallekey.getTramiteId()));
 		params.put("tipoTramiteCampoId",Integer.toString(tramiteDetallekey.getTipoTramiteCampoId().getTipoTramiteId()));
 		params.put("campoDisponibleId",Integer.toString(tramiteDetallekey.getTipoTramiteCampoId().getCampoDisponibleId()));
 		try {
-			gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_DELETE, params);
+			gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_DELETE, params, null);
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
 		}
@@ -212,12 +210,12 @@ public class GotTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public List<TramiteDetalle> tramiteDetalleList() throws GotClientException{
-		HashMap<String,String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		
 		TramiteDetalle[] autArray= {}; 
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_LIST, params);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_LIST, params, null);
 			autArray = (TramiteDetalle[])obj;
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -233,12 +231,12 @@ public class GotTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public List<TramiteDetalle> tramiteDetalleListById(int tramiteId) throws GotClientException{
-		HashMap<String,String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id",Integer.toString(tramiteId));
 		TramiteDetalle[] tramiteDetalleArray= {}; 
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_LIST_BYID, params);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_LIST_BYID, params, null);
 			tramiteDetalleArray = (TramiteDetalle[])obj;
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -258,8 +256,7 @@ public class GotTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public TramiteDetalle tramiteDetalle(TramiteDetalleKey tramiteDetallekey) throws GotClientException {
-		HashMap<String,String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("tramiteId",Integer.toString(tramiteDetallekey.getTramiteId()));
 		params.put("tipoTramiteCampoId",Integer.toString(tramiteDetallekey.getTipoTramiteCampoId().getTipoTramiteId()));
 		params.put("campoDisponibleId",Integer.toString(tramiteDetallekey.getTipoTramiteCampoId().getCampoDisponibleId()));
@@ -267,7 +264,7 @@ public class GotTramiteProxyService {
 		TramiteDetalle tramiteDetalle = null;
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_SHOW, params);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.TRAMITE_DETALLE_SHOW, params, null);
 			tramiteDetalle = (TramiteDetalle)obj;
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -282,7 +279,7 @@ public class GotTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public void tramiteDetalleUpdate(TramiteDetalle tramiteDetalle)  throws GotClientException{
-		HashMap<String,String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("tramiteId",Integer.toString(tramiteDetalle.getId().getTramiteId()));
 		params.put("tipoTramiteCampoId",Integer.toString(tramiteDetalle.getId().getTipoTramiteCampoId().getTipoTramiteId()));
 		params.put("campoDisponibleId",Integer.toString(tramiteDetalle.getId().getTipoTramiteCampoId().getCampoDisponibleId()));

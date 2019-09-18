@@ -31,7 +31,7 @@ public class GotAutorizadoProxyService {
 	public void autorizadoAdd(Autorizado autorizado) throws GotClientException {
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_ADD, autorizado);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_ADD, null, autorizado);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -45,11 +45,11 @@ public class GotAutorizadoProxyService {
 	 * @param lastId
 	 */
 	public void autorizadoDelete(int tramiteId, int autorizadoId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(tramiteId));
 		params.put("autorizadoId", Integer.toString(autorizadoId));
 		try {
-			gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_DELETE, params);
+			gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_DELETE, params, null);
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
 		}
@@ -68,7 +68,7 @@ public class GotAutorizadoProxyService {
 		Autorizado[] autArray = {};
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_LIST, params);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_LIST, null, params);
 			autArray = (Autorizado[]) obj;
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -85,12 +85,12 @@ public class GotAutorizadoProxyService {
 	 * @throws GotClientException
 	 */
 	public Autorizado autorizadoShow(int autorizadoId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(autorizadoId));
 		Autorizado autorizado = null;
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_SHOW, params);
+			obj = gotClient.ejecutarServicio(GotFuncionalEnum.AUTORIZADO_SHOW, params, null);
 			autorizado = (Autorizado) obj;
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
@@ -107,7 +107,7 @@ public class GotAutorizadoProxyService {
 	 * @throws GotClientException
 	 */
 	public void autorizadoUpdate(Autorizado autorizado) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("id", autorizado.getId().toString());
 		Object obj;
 		try {

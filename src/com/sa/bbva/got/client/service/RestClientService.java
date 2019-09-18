@@ -35,38 +35,25 @@ public class RestClientService {
 	
 	
 	
-	/**
-	 * Ejecutar peticion sin parametros get.
-	 * @param oper Operacion a ejecutar.
-	 * @param obj Parametros post a jsonizar. 
-	 * @return Object respuesta del tipo oper.getResponseClass()
-	 * @throws GotClientException
-	 */
-	public Object ejecutarServicio (RestOperation oper, Object ob ) throws RestClientException{
-		return ejecutarServicio(oper, null, ob);
-	}
-	
-	/**
-	 * Ejecutar peticion sin parametros post.
-	 * @param oper Operacion a ejecutar.
-	 * @param obj Parametros post a jsonizar. 
-	 * @return Object respuesta del tipo oper.getResponseClass()
-	 * @throws GotClientException
-	 */
-	public Object ejecutarServicio (RestOperation oper, Map<String, String> params ) throws RestClientException{
-		return ejecutarServicio(oper, params, null);
-	}
 
 	
-	
-	public Object ejecutarServicio (RestOperation oper,  Map<String, String> params, Object obj ) throws RestClientException{
+	/**
+	 * Ejecutar peticion.
+	 * @param oper Operacion a ejecutar.
+	 * @param obj Parametros post a jsonizar. 
+	 * @return Object respuesta del tipo oper.getResponseClass()
+	 * @throws GotClientException
+	 */
+	public Object ejecutarServicio (RestOperation oper,  Map<String, Object> params, Object obj ) throws RestClientException{
 		String inputString = null;
 		int responseCode = 0;
 		Object bean = null;
 		try {
-			URL url = new URL(restURI+getParamReplacement(oper.getUrl(),params));
-			System.out.println("OP: "+url);
+			String restUrl = restURI+getParamReplacement(oper.getUrl(),params);
+			URL url = new URL(restUrl);
+			System.out.println("OP: "+restUrl);
 			// Get an HttpURLConnection subclass object instead of URLConnection
+			
 			HttpURLConnection myHttpConnection = (HttpURLConnection) url.openConnection();
 			// setRequestMethod
 			myHttpConnection.setRequestMethod(oper.getRequestMethod());
@@ -103,13 +90,13 @@ public class RestClientService {
 	 * Arma la url del request con los parametros (get)
 	 * 
 	 */
-	private String getParamReplacement(String opUrl, Map<String, String> params) throws RestClientException{
+	private String getParamReplacement(String opUrl, Map<String, Object> params) throws RestClientException{
 		if (params !=null){
 			Set<String> mapKeys = params.keySet();
 			StringBuffer paramAdicionales =new StringBuffer();
 	        for (String key : mapKeys) {
 	        	if (opUrl.contains("{" + key + "}")) {
-	        		opUrl = opUrl.replaceAll("\\{" + key + "\\}", params.get(key));	
+	        		opUrl = opUrl.replaceAll("\\{" + key + "\\}", params.get(key).toString());	
 	        	} else {
 	        		paramAdicionales.append(key)
 		        		.append("=")

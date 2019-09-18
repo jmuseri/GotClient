@@ -37,7 +37,7 @@ public class GotCampoDisponibleProxyService {
 	public void campoDisponibleAdd(CampoDisponible campo) throws GotClientException {
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.CAMPODISPONIBLE_ADD, campo);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.CAMPODISPONIBLE_ADD, null, campo);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -52,11 +52,10 @@ public class GotCampoDisponibleProxyService {
 	 * @throws GotClientException
 	 */
 	public void campoDisponibleDelete(int campoDisponibleId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(campoDisponibleId));
 		try {
-			gotClient.ejecutarServicio(GotParametriaEnum.CAMPODISPONIBLE_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.CAMPODISPONIBLE_DELETE, params, null);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,12 +69,12 @@ public class GotCampoDisponibleProxyService {
 	 * @throws GotClientException
 	 */
 	public List<CampoDisponible> campoDisponibleList() throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 
 		CampoDisponible[] trArray = {};
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.CAMPODISPONIBLE_LIST, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.CAMPODISPONIBLE_LIST, params, null);
 			trArray = (CampoDisponible[]) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -92,12 +91,12 @@ public class GotCampoDisponibleProxyService {
 	 * @throws GotClientException
 	 */
 	public CampoDisponible campoDisponibleShow(int campoDisponibleId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(campoDisponibleId));
 		CampoDisponible campo = null;
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.CAMPODISPONIBLE_SHOW, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.CAMPODISPONIBLE_SHOW, params, null);
 			campo = (CampoDisponible) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -114,7 +113,7 @@ public class GotCampoDisponibleProxyService {
 	 * @throws GotClientException
 	 */
 	public void campoDisponibleUpdate(CampoDisponible campo) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", campo.getId().toString());
 		Object obj;
 		try {

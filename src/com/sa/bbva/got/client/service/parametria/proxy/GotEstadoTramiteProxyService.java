@@ -37,7 +37,7 @@ public class GotEstadoTramiteProxyService {
 	public void estadoTramiteAdd(EstadoTramite estadoTramite) throws GotClientException {
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_ADD, estadoTramite);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_ADD, null, estadoTramite);
 			System.out.println(obj);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -52,11 +52,11 @@ public class GotEstadoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public void estadoTramiteDelete(int estadoTramiteId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
-		params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
+
 		params.put("id", Integer.toString(estadoTramiteId));
 		try {
-			gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_DELETE, params);
+			gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_DELETE, params, null);
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,12 +70,12 @@ public class GotEstadoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public List<EstadoTramite> estadoTramiteList() throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 
 		EstadoTramite[] trArray = {};
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_LIST, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_LIST, params, null);
 			trArray = (EstadoTramite[]) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -92,12 +92,12 @@ public class GotEstadoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public EstadoTramite estadoTramiteShow(int estadoTramiteId) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", Integer.toString(estadoTramiteId));
 		EstadoTramite campo = null;
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_SHOW, params);
+			obj = gotClient.ejecutarServicio(GotParametriaEnum.ESTADOTRAMITE_SHOW, params, null);
 			campo = (EstadoTramite) obj;
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
@@ -114,7 +114,7 @@ public class GotEstadoTramiteProxyService {
 	 * @throws GotClientException
 	 */
 	public void estadoTramiteUpdate(EstadoTramite estadoTramite) throws GotClientException {
-		HashMap<String, String> params = new HashMap<String, String>();
+		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("id", estadoTramite.toString());
 		Object obj;
 		try {

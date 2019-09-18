@@ -16,6 +16,8 @@ public class TramiteDTO implements Serializable{
 	
     private Integer idTipoTramite;
 
+    private String tipoTramiteDesc;
+
     private Integer nroClienteEmpresa;
 
     private String cuitEmpresa;
