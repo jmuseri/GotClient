@@ -200,6 +200,27 @@ public class GotFuncionalProxyService {
 	}
 	
 	
+	
+	/**
+	 * Rechaza un tramite.
+	 * @param id
+	 * @param usuario
+	 * @throws GotClientException
+	 */
+	public void activarTramite(Integer id, String usuario) throws GotClientException {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id.toString());
+		params.put("usuario", usuario);
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_TRAMITES_ACTIVAR, params, null);
+			System.out.println(obj);
+		} catch (RestClientException e) {
+			throw new GotClientException(e.getMessage());
+		}
+	}
+	
+	
 	/**
 	 * Add a tramite.
 	 * @param tramite
@@ -231,8 +252,8 @@ public class GotFuncionalProxyService {
 			throws GotClientException {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("nroClienteEmpresa", nroClienteEmpresa.toString());
-		params.put("estadoTramite", estado);
-		params.put("idTipoTramite", idTipoTramite);
+		if (estado !=null && !estado.equals("")) params.put("estadoTramite", estado);
+		if (idTipoTramite !=null) params.put("idTipoTramite", idTipoTramite);
 		TramiteDTO[] autArray = {};
 		Object obj;
 		try {

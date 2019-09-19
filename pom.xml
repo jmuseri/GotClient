@@ -28,6 +28,7 @@
           </execution>
         </executions>
         <configuration>
+          <outputDirectory>C:\desa\apps\was\femp\femp.war\WEB-INF\lib</outputDirectory>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
