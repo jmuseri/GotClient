@@ -186,9 +186,10 @@ public class GotFuncionalProxyService {
 	 * @param usuario
 	 * @throws GotClientException
 	 */
-	public void rechazarTramite(Integer id, String usuario) throws GotClientException {
+	public void rechazarTramite(Integer id, Integer motivoRechazoId, String usuario) throws GotClientException {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("id", id.toString());
+		params.put("motivoRechazoId", motivoRechazoId.toString());
 		params.put("usuario", usuario);
 		Object obj;
 		try {

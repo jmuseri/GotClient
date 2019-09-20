@@ -114,7 +114,6 @@ public class GotRestClientFuncionalTest {
 			funcionalProxy.tramiteAdd(tramite);
 			
 			funcionalProxy.gestionarTramite(tramiteDto.getId(),"usuario");
-			funcionalProxy.rechazarTramite(tramiteDto.getId(), "usuario");
 			funcionalProxy.finalizarTramite(tramiteDto.getId(),"usuario");
 			
 		} catch (GotClientException e) {
