@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class SectorDTO implements Serializable {
 
 	private static final long serialVersionUID = -5445678639117753177L;
