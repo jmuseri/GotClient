@@ -23,6 +23,6 @@ public class CampoDisponibleDTO implements Serializable {
     
     private boolean obligatorio;
 
-    private boolean leyenda;
+    private String leyenda;
 
 }
