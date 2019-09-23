@@ -10,14 +10,12 @@ import com.sa.bbva.got.client.exception.RestClientException;
 import com.sa.bbva.got.client.service.RestClientService;
 import com.sa.bbva.got.client.service.funcional.GotFuncionalFuncionalEnum;
 
-import ar.com.bbva.got.bean.StatusResponse;
 import ar.com.bbva.got.dto.AltaTramiteDTO;
 import ar.com.bbva.got.dto.AutorizadoDTO;
 import ar.com.bbva.got.dto.CampoDisponibleDTO;
+import ar.com.bbva.got.dto.MotivoRechazoDTO;
 import ar.com.bbva.got.dto.TipoTramiteDTO;
 import ar.com.bbva.got.dto.TramiteDTO;
-import ar.com.bbva.got.model.EstadoTramite;
-import ar.com.bbva.got.model.TipoTramite;
 
 public class GotFuncionalProxyService {
 
@@ -71,6 +69,22 @@ public class GotFuncionalProxyService {
 	}
 	
 	
+	/**
+	 * Delete a tramiteAutorizado
+	 * 
+	 * @param gotClient
+	 * @param lastId
+	 */
+	public void tramiteAutorizadoDelete(int tramiteId, int autorizadoId) throws GotClientException {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("tramiteId", Integer.toString(tramiteId));
+		params.put("autorizadoId", Integer.toString(autorizadoId));
+		try {
+			gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_TRAMITES_AUTORIZADOS_DELETE, params, null);
+		} catch (RestClientException e) {
+			throw new GotClientException(e.getMessage());
+		}
+	}
 	
 	/**
 	 * View a list of available TipoTramite
@@ -208,6 +222,28 @@ public class GotFuncionalProxyService {
 	 * @param usuario
 	 * @throws GotClientException
 	 */
+	public void eliminarTramite(Integer id) throws GotClientException {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id.toString());
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_TRAMITES_ELIMINAR, params, null);
+			System.out.println(obj);
+		} catch (RestClientException e) {
+			throw new GotClientException(e.getMessage());
+		}
+	}
+	
+	
+	
+	
+	
+	/**
+	 * Rechaza un tramite.
+	 * @param id
+	 * @param usuario
+	 * @throws GotClientException
+	 */
 	public void activarTramite(Integer id, String usuario) throws GotClientException {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("id", id.toString());
@@ -227,13 +263,14 @@ public class GotFuncionalProxyService {
 	 * @param tramite
 	 * @throws GotClientException
 	 */
+	@SuppressWarnings("unchecked")
 	public int tramiteAdd(AltaTramiteDTO tramite) throws GotClientException {
 		
 		Object obj;
 		try {
 			obj = gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_TRAMITE_ADD, null, tramite);
 			System.out.println(obj);
-			return Integer.parseInt(((LinkedHashMap<String, String>)obj).get("description"));
+			return Integer.parseInt(((LinkedHashMap<String,String>)obj).get("description"));
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
 		}
@@ -258,13 +295,70 @@ public class GotFuncionalProxyService {
 		TramiteDTO[] autArray = {};
 		Object obj;
 		try {
-			obj = gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_TRAMITES, params, null);
+			obj = gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_TRAMITES_LIST_BYNROCLIENTE, params, null);
 			autArray = (TramiteDTO[]) obj;
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
 		}
 		return Arrays.asList(autArray);
 	}	
+	
+	
+	
+	/**
+	 * 
+	 * @param nroClienteEmpresa
+	 * @param estado
+	 * @param tipoTramite
+	 * @return
+	 * @throws GotClientException
+	 */
+	public List<TramiteDTO> tramiteListByCuit(String cuitEmpresa, String estado , Integer idTipoTramite )
+			throws GotClientException {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("cuit", cuitEmpresa);
+		if (estado !=null && !estado.equals("")) params.put("estadoTramite", estado);
+		if (idTipoTramite !=null) params.put("idTipoTramite", idTipoTramite);
+		TramiteDTO[] autArray = {};
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_TRAMITES_LIST_BYCUIT, params, null);
+			autArray = (TramiteDTO[]) obj;
+		} catch (RestClientException e) {
+			throw new GotClientException(e.getMessage());
+		}
+		return Arrays.asList(autArray);
+	}	
+	
+	
+	/**
+	 * 
+	 * @param nroClienteEmpresa
+	 * @param estado
+	 * @param tipoTramite
+	 * @return
+	 * @throws GotClientException
+	 */
+	public List<MotivoRechazoDTO> motivoRechazoList(Integer tipoTramiteId )
+			throws GotClientException {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("tipoTramiteId",Integer.toString(tipoTramiteId));
+		MotivoRechazoDTO[] autArray = {};
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_MOTIVOS_RECHAZO, params, null);
+			autArray = (MotivoRechazoDTO[]) obj;
+		} catch (RestClientException e) {
+			throw new GotClientException(e.getMessage());
+		}
+		return Arrays.asList(autArray);
+	}	
+	
+	
+	
+	
+	
+	
 	
 
 }
