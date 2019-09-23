@@ -7,7 +7,7 @@ public enum GotFuncionalFuncionalEnum implements RestOperation {
 	FUNCIONAL_AUTORIZADOS("/funcional/autorizados","GET","[Lar.com.bbva.got.dto.AutorizadoDTO;"),
 	FUNCIONAL_MOTIVOS_RECHAZO("/funcional/motivosRechazo","GET","[Lar.com.bbva.got.dto.MotivoRechazoDTO;"),
 	FUNCIONAL_AUTORIZADOS_ADD("/funcional/autorizados/add","POST","java.lang.Object"),
-	FUNCIONAL_TRAMITES_AUTORIZADOS_DELETE("/funcional/tramite/{tramiteId}/autorizado/{autorizadoId}/delete/","POST","java.lang.Object"),
+	FUNCIONAL_AUTORIZADOS_DELETE("/funcional/autorizado/{autorizadoId}/delete/","POST","java.lang.Object"),
 	FUNCIONAL_TIPO_TRAMITES("/funcional/tipoTramites","GET","[Lar.com.bbva.got.dto.TipoTramiteDTO;"),
 	FUNCIONAL_TIPO_TRAMITES_SHOW("/funcional/tipoTramites/{id}/camposDisponibles","GET","[Lar.com.bbva.got.dto.CampoDisponibleDTO;"),
 	FUNCIONAL_TRAMITES_SHOW("/funcional/tramites/{id}","GET","ar.com.bbva.got.dto.TramiteDTO"),
