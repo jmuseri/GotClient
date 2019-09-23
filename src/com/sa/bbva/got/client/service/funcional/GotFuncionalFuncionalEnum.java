@@ -22,8 +22,7 @@ public enum GotFuncionalFuncionalEnum implements RestOperation {
 	FUNCIONAL_TRAMITES_ELIMINAR("/funcional/tramites/{id}/eliminar","POST","java.lang.Object"),
 	FUNCIONAL_TRAMITES_DETALLE_UPDATE("/funcional/tramites/detalle/update/{tramiteId}/{tipoTramiteCampoId}/{campoDisponibleId}","POST","java.lang.Object"),
 	FUNCIONAL_TRAMITES_DETALLE_DELETE("/funcional/tramites/detalle/delete/{tramiteId}/{tipoTramiteCampoId}/{campoDisponibleId}","POST","java.lang.Object"),
-	FUNCIONAL_TRAMITES_DETALLE_ADD("/funcional/tramites/detalle/update/{tramiteId}/{tipoTramiteCampoId}/{campoDisponibleId}","POST","java.lang.Object")
-	;
+	FUNCIONAL_TRAMITES_DETALLE_ADD("/funcional/tramites/detalle/update/{tramiteId}/{tipoTramiteCampoId}/{campoDisponibleId}","POST","java.lang.Object");
 	
 	private String requestMethod;
 	private String url;

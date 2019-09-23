@@ -80,7 +80,7 @@ public class GotFuncionalProxyService {
 		params.put("tramiteId", Integer.toString(tramiteId));
 		params.put("autorizadoId", Integer.toString(autorizadoId));
 		try {
-			gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_TRAMITES_AUTORIZADOS_DELETE, params, null);
+			gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_AUTORIZADOS_DELETE, params, null);
 		} catch (RestClientException e) {
 			throw new GotClientException(e.getMessage());
 		}
