@@ -15,6 +15,6 @@ public class CampoDetalleDTO implements Serializable {
    
     private String descripcion;
     
-	private String Leyenda;
+	private String leyenda;
 	
 }
