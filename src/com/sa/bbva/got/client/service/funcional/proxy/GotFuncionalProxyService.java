@@ -75,9 +75,8 @@ public class GotFuncionalProxyService {
 	 * @param gotClient
 	 * @param lastId
 	 */
-	public void tramiteAutorizadoDelete(int tramiteId, int autorizadoId) throws GotClientException {
+	public void autorizadoDelete(int autorizadoId) throws GotClientException {
 		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.put("tramiteId", Integer.toString(tramiteId));
 		params.put("autorizadoId", Integer.toString(autorizadoId));
 		try {
 			gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_AUTORIZADOS_DELETE, params, null);
