@@ -285,12 +285,13 @@ public class GotFuncionalProxyService {
 	 * @return
 	 * @throws GotClientException
 	 */
-	public List<TramiteDTO> tramiteList(Integer nroClienteEmpresa, String estado , Integer idTipoTramite )
+	public List<TramiteDTO> tramiteList(Integer nroClienteEmpresa, String estado , Integer idTipoTramite,String sectorInicioId )
 			throws GotClientException {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("nroClienteEmpresa", nroClienteEmpresa.toString());
 		if (estado !=null && !estado.equals("")) params.put("estadoTramite", estado);
 		if (idTipoTramite !=null) params.put("idTipoTramite", idTipoTramite);
+		if (sectorInicioId !=null) params.put("sectorInicioId", sectorInicioId);
 		TramiteDTO[] autArray = {};
 		Object obj;
 		try {
@@ -312,12 +313,13 @@ public class GotFuncionalProxyService {
 	 * @return
 	 * @throws GotClientException
 	 */
-	public List<TramiteDTO> tramiteListByCuit(String cuitEmpresa, String estado , Integer idTipoTramite )
+	public List<TramiteDTO> tramiteListByCuit(String cuitEmpresa, String estado , Integer idTipoTramite, String sectorInicioId )
 			throws GotClientException {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("cuit", cuitEmpresa);
 		if (estado !=null && !estado.equals("")) params.put("estadoTramite", estado);
 		if (idTipoTramite !=null) params.put("idTipoTramite", idTipoTramite);
+		if (sectorInicioId !=null) params.put("sectorInicioId", sectorInicioId);
 		TramiteDTO[] autArray = {};
 		Object obj;
 		try {
