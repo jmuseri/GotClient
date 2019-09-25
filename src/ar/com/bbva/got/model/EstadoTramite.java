@@ -7,6 +7,7 @@ public enum EstadoTramite {
 	ACTIVO,
 	GESTION,
 	FINALIZADO,
+	CANCELADO,
 	RECHAZADO;
     
 }

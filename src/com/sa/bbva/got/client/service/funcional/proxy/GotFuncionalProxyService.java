@@ -257,6 +257,28 @@ public class GotFuncionalProxyService {
 	}
 	
 	
+	
+	/**
+	 * Rechaza un tramite.
+	 * @param id
+	 * @param usuario
+	 * @throws GotClientException
+	 */
+	public void cancelarTramite(Integer id, String usuario) throws GotClientException {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id.toString());
+		params.put("usuario", usuario);
+		Object obj;
+		try {
+			obj = gotClient.ejecutarServicio(GotFuncionalFuncionalEnum.FUNCIONAL_TRAMITES_CANCELAR, params, null);
+			System.out.println(obj);
+		} catch (RestClientException e) {
+			throw new GotClientException(e.getMessage());
+		}
+	}
+	
+	
+	
 	/**
 	 * Add a tramite.
 	 * @param tramite
