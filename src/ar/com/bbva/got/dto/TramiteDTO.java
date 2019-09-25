@@ -39,5 +39,7 @@ public class TramiteDTO implements Serializable{
     private Date fechaInicio;
 
     private Date fechaVencimiento;
+    
+    private String idOrden;
 
 }
