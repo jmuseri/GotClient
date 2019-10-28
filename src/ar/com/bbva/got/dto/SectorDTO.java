@@ -2,8 +2,6 @@ package ar.com.bbva.got.dto;
 
 import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import lombok.Data;
 
 @Data

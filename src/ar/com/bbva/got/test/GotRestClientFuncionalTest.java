@@ -12,6 +12,7 @@ import ar.com.bbva.got.dto.AltaTramiteDTO;
 import ar.com.bbva.got.dto.AutorizadoDTO;
 import ar.com.bbva.got.dto.TipoTramiteDTO;
 import ar.com.bbva.got.dto.TramiteDTO;
+import ar.com.bbva.got.model.SectorKey;
 
 /**
  * Prueba Manual de Servicios GOT.
@@ -21,7 +22,7 @@ import ar.com.bbva.got.dto.TramiteDTO;
  */
 public class GotRestClientFuncionalTest {
 
-	private static final String REST_URI = "http://localhost:8180";
+	private static final String REST_URI = "http://localhost:8080";
 	
 	
 	public static void main(String[] args) {
@@ -79,7 +80,7 @@ public class GotRestClientFuncionalTest {
 		
 		List<TipoTramiteDTO> tipoTramiteList= null;
 		try {
-			tipoTramiteList= funcionalProxy.tipoTramiteList(true, null, null);
+			tipoTramiteList= funcionalProxy.tipoTramiteList(true, "web", "FNC");
 		} catch (GotClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -107,9 +108,9 @@ public class GotRestClientFuncionalTest {
 			tramite.setIdTipoTramite(tramiteDto.getIdTipoTramite());
 			tramite.setNroClienteEmpresa(tramiteDto.getNroClienteEmpresa());
 			
-			//SectorKey key = new SectorKey(tramiteDto.getSectorActual().getCanal(),tramiteDto.getSectorActual().getSector());
+			SectorKey key = new SectorKey("web", "FNC");
 			
-			//tramite.setSectorAlta(key);
+			tramite.setSectorAlta(key);
 			tramite.setUsuarioAlta("PEPE");
 			funcionalProxy.tramiteAdd(tramite);
 			
