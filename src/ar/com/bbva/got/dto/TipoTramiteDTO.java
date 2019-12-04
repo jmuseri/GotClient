@@ -1,7 +1,6 @@
 package ar.com.bbva.got.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Set;
 
 import lombok.Data;
@@ -27,7 +26,7 @@ public class TipoTramiteDTO implements Serializable {
 
     private SectorDTO sectorInicial;
 
-    private ArrayList<CampoDisponibleDTO> campos;
+    private Set<CampoDisponibleDTO> campos;
 
     private Long horasResolucion;
 

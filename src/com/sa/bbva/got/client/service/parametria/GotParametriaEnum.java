@@ -4,43 +4,14 @@ import com.sa.bbva.got.client.service.RestOperation;
 
 public enum GotParametriaEnum implements RestOperation {
 
-	CAMPODISPONIBLE_ADD("/parametria/campoDisponible/add", "POST", "java.lang.Object"),
-	CAMPODISPONIBLE_DELETE("/parametria/campoDisponible/delete/{id}", "POST", "java.lang.Object"),
-	CAMPODISPONIBLE_LIST("/parametria/campoDisponible/list", "GET", "[Lcom.sa.bbva.got.model.CampoDisponible;"),
-	CAMPODISPONIBLE_SHOW("/parametria/campoDisponible/show/{id}", "GET", "ar.com.bbva.got.model.CampoDisponible"),
-	CAMPODISPONIBLE_UPDATE("/parametria/campoDisponible/update/{id}", "POST", "java.lang.Object"),
 
-	COMISION_ADD("/parametria/comision/add", "POST", "java.lang.Object"),
-	COMISION_DELETE("/parametria/comision/delete/{id}", "POST", "java.lang.Object"),
-	COMISION_LIST("/parametria/comision/list", "GET", "[Lcom.sa.bbva.got.model.Comision;"),
-	COMISION_SHOW("/parametria/comision/show/{id}", "GET", "ar.com.bbva.got.model.Comision"),
-	COMISION_UPDATE("/parametria/comision/update/{id}", "POST", "java.lang.Object"),
+	PARAMETRIA_MOTIVOS_RECHAZO("/parametria/motivoRechazo/list","GET","[Lar.com.bbva.got.dto.MotivoRechazoDTO;"),
+	PARAMETRIA_TIPO_TRAMITES("/parametria/tipoTramite/list","GET","[Lar.com.bbva.got.dto.TipoTramiteDTO;"),
 
-	ESTADOTRAMITE_ADD("/parametria/estadoTramite/add", "POST", "java.lang.Object"),
-	ESTADOTRAMITE_DELETE("/parametria/estadoTramite/delete/{id}", "POST", "java.lang.Object"),
-	ESTADOTRAMITE_LIST("/parametria/estadoTramite/list", "GET", "[Lcom.sa.bbva.got.model.EstadoTramite;"),
-	ESTADOTRAMITE_SHOW("/parametria/estadoTramite/show/{id}", "GET", "ar.com.bbva.got.model.EstadoTramite"),
-	ESTADOTRAMITE_UPDATE("/parametria/estadoTramite/update/{id}", "POST", "java.lang.Object"),
+	PARAMETRIA_TIPO_TRAMITES_SHOW("/parametria/campoDisponible/listByTipoTramite/{tipoTramiteId}","GET","[Lar.com.bbva.got.dto.CampoDisponibleDTO;"),
 
-	SECTOR_ADD("/parametria/sector/add", "POST", "java.lang.Object"),
-	SECTOR_DELETE("/parametria/sector/delete/{id}", "POST", "java.lang.Object"),
-	SECTOR_LIST("/parametria/sector/list", "GET", "[Lcom.sa.bbva.got.model.Sector;"),
-	SECTOR_SHOW("/parametria/sector/show/{id}", "GET", "ar.com.bbva.got.model.Sector"),
-	SECTOR_UPDATE("/parametria/sector/update/{id}", "POST", "java.lang.Object"),
-
-	TIPOTRAMITE_ADD("/parametria/tipoTramite/add", "POST", "java.lang.Object"),
-	TIPOTRAMITECAMPO_ADD("/parametria/tipoTramite/campoDisponible/add", "POST", "java.lang.Object"),
-	TIPOTRAMITECAMPO_DELETE("/parametria/tipoTramite/campoDisponible/delete/{tipoTramiteid}/{campoDisponible}", "POST", "java.lang.Object"),
-	TIPOTRAMITECAMPO_LIST("/parametria/tipoTramite/campoDisponible/list", "GET", "[Lcom.sa.bbva.got.model.TipoTramiteCampo;"),
-	TIPOTRAMITECAMPOID_LIST("/parametria/tipoTramite/campoDisponible/list/{id}", "GET", "[Lcom.sa.bbva.got.model.TipoTramiteCampo;"),
-	TIPOTRAMITECAMPO_UPDATE("/parametria/tipoTramite/campoDisponible/update/{tipoTramiteid}/{campoDisponibleId}", "POST", "java.lang.Object"),
-	TIPOTRAMITECOMISION_ADD("/parametria/tipoTramite/comision/add", "POST", "java.lang.Object"),
-	TIPOTRAMITECOMISION_DELETE("/parametria/tipoTramite/comision/delete/{id}", "POST", "java.lang.Object"),
-	TIPOTRAMITECOMISION_SHOW("/parametria/tipoTramite/comision/show/{id}", "GET", "ar.com.bbva.got.model.Comision"),
-	TIPOTRAMITE_DELETE("/parametria/tipoTramite/delete/{id}", "POST", "java.lang.Object"),
-	TIPOTRAMITE_LIST("/parametria/tipoTramite/list", "GET", "[Lcom.sa.bbva.got.model.TipoTramite;"),
-	TIPOTRAMITE_SHOW("/parametria/tipoTramite/show/{id}", "GET", "ar.com.bbva.got.model.TipoTramite"),
-	TIPOTRAMITE_UPDATE("/parametria/tipoTramite/update/{id}", "POST", "java.lang.Object");
+	
+;
 
 	private String requestMethod;
 	private String url;

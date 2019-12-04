@@ -6,13 +6,12 @@ import java.util.List;
 
 import com.sa.bbva.got.client.exception.GotClientException;
 import com.sa.bbva.got.client.service.funcional.proxy.GotFuncionalProxyService;
-import com.sa.bbva.got.client.service.funcional.proxy.GotTramiteProxyService;
+import com.sa.bbva.got.client.service.parametria.proxy.GotParametriaProxyService;
 
 import ar.com.bbva.got.dto.AltaTramiteDTO;
 import ar.com.bbva.got.dto.AutorizadoDTO;
-import ar.com.bbva.got.dto.TipoTramiteDTO;
+import ar.com.bbva.got.dto.SectorDTO;
 import ar.com.bbva.got.dto.TramiteDTO;
-import ar.com.bbva.got.model.SectorKey;
 
 /**
  * Prueba Manual de Servicios GOT.
@@ -26,20 +25,8 @@ public class GotRestClientFuncionalTest {
 	
 	
 	public static void main(String[] args) {
-//		////////////////////////////////////////////////////////////////////////
-//		/////// Parametria ////////////////////////////////////////////////////
-//		//////////////////////////////////////////////////////////////////////
-//		GotCampoDisponibleProxyService campoDisponibleProxy = new GotCampoDisponibleProxyService(REST_URI);
-//		GotComisionProxyService comisionProxy = new GotComisionProxyService(REST_URI);
-//		GotEstadoTramiteProxyService estadoTramiteProxy = new GotEstadoTramiteProxyService(REST_URI);
-//		GotSectorProxyService sectorProxy = new GotSectorProxyService(REST_URI);
-//		GotTipoTramiteProxyService tipoTramiteProxy = new GotTipoTramiteProxyService(REST_URI);
-//
-//		////////////////////////////////////////////////////////////////////////
-//		/////// Funcional /////////////////////////////////////////////////////
-//		//////////////////////////////////////////////////////////////////////
-//		GotAutorizadoProxyService autorizadoProxy = new GotAutorizadoProxyService(REST_URI);
-		GotTramiteProxyService tramiteProxy = new GotTramiteProxyService(REST_URI);
+
+		GotParametriaProxyService parametriaProxy = new GotParametriaProxyService(REST_URI);
 		GotFuncionalProxyService funcionalProxy = new GotFuncionalProxyService(REST_URI);	
 		
 		
@@ -72,15 +59,15 @@ public class GotRestClientFuncionalTest {
 		}
 		
 		try {
-			List<AutorizadoDTO> autorizadosList= funcionalProxy.autorizadoList("11111111111", 0);
+			funcionalProxy.autorizadoList("11111111111", 0);
 		} catch (GotClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		List<TipoTramiteDTO> tipoTramiteList= null;
+		
 		try {
-			tipoTramiteList= funcionalProxy.tipoTramiteList(true, "web", "FNC");
+			parametriaProxy.tipoTramiteList(true, "web", "FNC");
 		} catch (GotClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -97,9 +84,9 @@ public class GotRestClientFuncionalTest {
 			tramite.setDetalle(tramiteDto.getDetalle());
 			
 			
-			List<AutorizadoDTO> autorizadosList= funcionalProxy.autorizadoList("11111111111", 0);
+			List<AutorizadoDTO> autorizadosList= funcionalProxy.autorizadoList(tramiteDto.getCuitEmpresa(), tramiteDto.getNroClienteEmpresa());
 			List<Integer> autorizadosIds= new ArrayList<Integer>();
-			for (Iterator iterator = autorizadosList.iterator(); iterator.hasNext();) {
+			for (Iterator<AutorizadoDTO> iterator = autorizadosList.iterator(); iterator.hasNext();) {
 				AutorizadoDTO autorizadoDTO = (AutorizadoDTO) iterator.next();
 				autorizadosIds.add(autorizadoDTO.getId());
 				
@@ -108,7 +95,9 @@ public class GotRestClientFuncionalTest {
 			tramite.setIdTipoTramite(tramiteDto.getIdTipoTramite());
 			tramite.setNroClienteEmpresa(tramiteDto.getNroClienteEmpresa());
 			
-			SectorKey key = new SectorKey("web", "FNC");
+			SectorDTO key = new SectorDTO();
+			key.setCanal("web");
+			key.setSector("FNC");
 			
 			tramite.setSectorAlta(key);
 			tramite.setUsuarioAlta("PEPE");

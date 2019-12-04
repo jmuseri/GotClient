@@ -19,8 +19,10 @@ public class TramiteDTO implements Serializable{
     private String tipoTramiteDesc;
 
     private Integer nroClienteEmpresa;
-    
+
     private String cuitEmpresa;
+    
+    private Integer areaNegocio;
 
     private List<AutorizadoDTO> autorizado;
 
@@ -41,5 +43,10 @@ public class TramiteDTO implements Serializable{
     private Date fechaVencimiento;
     
     private String idOrden;
+        
+    private MotivoRechazoDTO motivoRechazo;
+    
+    private String codigoComision;
+    
 
 }

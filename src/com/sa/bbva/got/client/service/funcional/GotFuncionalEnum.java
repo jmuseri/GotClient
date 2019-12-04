@@ -4,28 +4,33 @@ import com.sa.bbva.got.client.service.RestOperation;
 
 public enum GotFuncionalEnum implements RestOperation {
 
-	AUTORIZADO_ADD("/funcional/autorizado/add","POST","java.lang.Object"),
-	AUTORIZADO_DELETE("/funcional/autorizado/delete/{id}","POST","java.lang.Object"),
-	AUTORIZADO_LIST("/funcional/autorizado/list","GET","[Lar.com.bbva.got.model.Autorizado;"),
-	AUTORIZADO_SHOW("/funcional/autorizado/show/{id}","GET","ar.com.bbva.got.model.Autorizado"),
-	AUTORIZADO_UPDATE("/funcional/autorizado/update/{id}","POST","java.lang.Object"),
+	FUNCIONAL_AUTORIZADOS("/funcional/autorizado/list","GET","[Lar.com.bbva.got.dto.AutorizadoDTO;"),
+	FUNCIONAL_AUTORIZADOS_ADD("/funcional/autorizado/add","POST","java.lang.Object"),
+	FUNCIONAL_AUTORIZADOS_DELETE("/funcional/autorizado/{autorizadoId}/delete/","POST","java.lang.Object"),
+	FUNCIONAL_AUTORIZADOS_SHOW("/funcional/autorizados/show/{tipoDocumento}/{numeroDocumento}","GET","ar.com.bbva.got.dto.AutorizadoDTO"),
 	
-	TRAMITE_ADD("/funcional/tramite/add","POST","java.lang.Object"), //Add a tramite
-	TRAMITE_AUTORIZADO_ADD("/funcional/tramite/autorizado/add","POST","java.lang.Object"), //Add a tramiteAutorizado
-	TRAMITE_AUTORIZADO_DELETE("/funcional/tramite/autorizado/delete/{tramiteId}/{autorizadoId}}","POST","java.lang.Object"),//Delete a tramiteAutorizado
-	TRAMITE_AUTORIZADO_LIST("/funcional/tramite/autorizado/list/{id}","GET","[Lar.com.bbva.got.model.TramiteAutorizado;"), //Search a tramiteAutorizado with a Tramite ID
-	TRAMITE_DELETE("/funcional/tramite/delete/{id}","POST","java.lang.Object"), //Delete a tramite
 	
-	TRAMITE_DETALLE_ADD("/funcional/tramite/detalle/add","POST","java.lang.Object"), //Add a tramiteDetalle
-	TRAMITE_DETALLE_DELETE ("/funcional/tramite/detalle/delete/{tramiteId}/{tipoTramiteCampoId}/{campoDisponibleId}","POST","java.lang.Object"), //Delete a tramiteDetalle
-	TRAMITE_DETALLE_LIST("/funcional/tramite/detalle/list","GET","[Lar.com.bbva.got.model.TramiteDetalle;"), //View a list of available tramiteDetalle
-	TRAMITE_DETALLE_LIST_BYID ("/funcional/tramite/detalle/list/{id}","GET","[Lar.com.bbva.got.model.TramiteDetalle;"), //Search a tramiteDetalle with a Tramite ID
-	TRAMITE_DETALLE_SHOW("/funcional/tramite/detalle/show/{tramiteId}/{tipoTramiteCampoId}/{campoDisponibleId}","POST","ar.com.bbva.got.model.TramiteDetalle"), //Search a tramiteDetalle with an ID
-	TRAMITE_DETALLE_UPDATE("/funcional/tramite/detalle/update/{tramiteId}/{tipoTramiteCampoId}/{campoDisponibleId}","POST","java.lang.Object"), //Update a tramiteDetalle
-	//TRAMITE_LIST("/funcional/tramite/list","GET","[Lar.com.bbva.got.model.Tramite;"), //View a list of available tramite
-	TRAMITE_SHOW("/funcional/tramite/show/{id}","GET","ar.com.bbva.got.model.Tramite"), //Search a tramite with an ID
-	TRAMITE_UPDATE("/funcional/tramite/update/{id}","POST","java.lang.Object"); //Update a tramite
+	FUNCIONAL_TRAMITES_FINALIZAR("/funcional/tramite/{id}/finalizar","POST","java.lang.Object"),
+	FUNCIONAL_TRAMITES_GESTIONAR("/funcional/tramite/{id}/gestionar","POST","java.lang.Object"),
+	FUNCIONAL_TRAMITES_RECHAZAR("/funcional/tramite/{id}/rechazar","POST","java.lang.Object"),
+	FUNCIONAL_TRAMITES_ACTIVAR("/funcional/tramite/{id}/activar","POST","java.lang.Object"),
+	FUNCIONAL_TRAMITES_CANCELAR("/funcional/tramite/{id}/cancelar","POST","java.lang.Object"),
+	FUNCIONAL_TRAMITES_ELIMINAR("/funcional/tramite/{id}/eliminar","POST","java.lang.Object"),
 
+	
+	FUNCIONAL_TRAMITES_SHOW("/funcional/tramite/{id}","GET","ar.com.bbva.got.dto.TramiteDTO"),
+	FUNCIONAL_TRAMITE_ADD("/funcional/tramite/add","POST","java.lang.Object"),
+	FUNCIONAL_TRAMITES_DETALLE_UPDATE("/funcional/tramite/detalle/update/{tramiteId}/{tipoTramiteCampoId}/{campoDisponibleId}","POST","java.lang.Object"),
+	FUNCIONAL_TRAMITES_DETALLE_DELETE("/funcional/tramite/detalle/delete/{tramiteId}/{tipoTramiteCampoId}/{campoDisponibleId}","POST","java.lang.Object"),
+	FUNCIONAL_TRAMITES_DETALLE_ADD("/funcional/tramite/detalle/update/{tramiteId}/{tipoTramiteCampoId}/{campoDisponibleId}","POST","java.lang.Object"),
+	
+	FUNCIONAL_TRAMITES_LIST_BYAUTORIZADO("/funcional/tramite/listByAutorizado/{tipoDocumento}/{numeroDocumento}","GET","[Lar.com.bbva.got.dto.TramiteDTO;"),
+	FUNCIONAL_TRAMITES_LIST_BYNROCLIENTE("/funcional/tramite/list/{nroClienteEmpresa}","GET","[Lar.com.bbva.got.dto.TramiteDTO;"),
+	FUNCIONAL_TRAMITES_LIST_BYCUIT("/funcional/tramite/listByCuit/{cuit}","GET","[Lar.com.bbva.got.dto.TramiteDTO;");
+
+	
+	
+	
 	
 	private String requestMethod;
 	private String url;

@@ -17,8 +17,6 @@ public class CampoDisponibleDTO implements Serializable {
     
     private String tipoDato;
     
-    private String valor;
-    
     private boolean activo;
     
     private boolean obligatorio;

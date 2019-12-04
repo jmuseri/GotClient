@@ -26,6 +26,8 @@ public class AutorizadoDTO implements Serializable {
     private String sexo;
     
     private boolean activo;
+    
+    private boolean finalizoTramite;
 
     
 }
