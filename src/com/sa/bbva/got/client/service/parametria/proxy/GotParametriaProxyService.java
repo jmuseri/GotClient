@@ -61,7 +61,7 @@ public class GotParametriaProxyService {
 	 */
 	public List<CampoDisponibleDTO> camposDisponiblesList(int tipoTramiteId)  throws GotClientException {
 		HashMap<String,Object> params = new HashMap<String, Object>();
-		params.put("id",Integer.toString(tipoTramiteId));
+		params.put("tipoTramiteId",Integer.toString(tipoTramiteId));
 		CampoDisponibleDTO[] autArray = {};
 		Object obj;
 		try {
